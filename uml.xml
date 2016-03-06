@@ -1,0 +1,9 @@
+<application>
+  <component name="UmlConfiguration">
+    <option name="categories">
+      <map>
+        <entry id="JAVA" categories="Inner Classes;Show One To One;Show One To Many" />
+      </map>
+    </option>
+  </component>
+</application>
