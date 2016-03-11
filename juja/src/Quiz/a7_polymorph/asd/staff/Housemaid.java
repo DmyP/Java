@@ -1,7 +1,6 @@
 package Quiz.a7_polymorph.asd.staff;
 
 import Quiz.a7_polymorph.asd.Floor;
-import Quiz.a7_polymorph.asd.Room;
 import Quiz.a7_polymorph.asd.apartment.Apartment;
 import Quiz.a7_polymorph.asd.apartment.TechnicalApartment;
 
@@ -15,7 +14,7 @@ public class Housemaid {
             TechnicalApartment techApartment = (TechnicalApartment)floor.getApartments()[0];
             tools = techApartment.getTools();
         }
-        for (Room room : apartment.getRooms()) {
+        for (Object room : apartment.getRooms().getArray()) {
             tools.clean(room);
         }
     }

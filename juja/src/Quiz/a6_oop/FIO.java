@@ -4,6 +4,16 @@ public class FIO {
     private String firstName;
     private String secondName;
 
+    public FIO(String firstName, String secondName) {
+        this.setFirstName(firstName);
+        this.setSecondName(secondName);
+    }
+
+    public FIO() {
+        super();
+    }
+
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }

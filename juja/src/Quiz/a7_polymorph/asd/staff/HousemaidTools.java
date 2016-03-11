@@ -1,10 +1,8 @@
 package Quiz.a7_polymorph.asd.staff;
 
-import Quiz.a7_polymorph.asd.Room;
-
 public class HousemaidTools {
 
-    public void clean(Room room) {
+    public void clean(Object room) {
         System.out.println("Cleaning room " + room.toString() + " ...");
         sleep();
         System.out.println("Cleaning done!");

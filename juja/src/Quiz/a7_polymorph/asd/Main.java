@@ -14,12 +14,12 @@ public class Main extends Object {
         Owner owner4 = new Owner(new FIO("Adam", "Pupkin"));
         Owner owner5 = new Owner(new FIO("Bob", "Marley"));
 
-        Owner[] owners = new Owner[5];
-        owners[0] = owner1;
-        owners[1] = owner2;
-        owners[2] = owner3;
-        owners[3] = owner4;
-        owners[4] = owner5;
+        MyArray owners = new MyArray(5);
+        owners.set(0, owner1);
+        owners.set(1, owner2);
+        owners.set(2, owner3);
+        owners.set(3, owner4);
+        owners.set(4, owner5);
 
         multiHouse.settle(owners);
 

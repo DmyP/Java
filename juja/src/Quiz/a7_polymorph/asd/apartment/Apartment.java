@@ -1,15 +1,15 @@
 package Quiz.a7_polymorph.asd.apartment;
 
-import Quiz.a7_polymorph.asd.Room;
+import Quiz.a7_polymorph.asd.MyArray;
 
-public abstract class Apartment {
+public abstract class  Apartment {
 
     protected int number;
-    protected Room[] rooms;
+    protected MyArray rooms;
 
     public Apartment(int number, int capacity) {
         this.number = number;
-        rooms = new Room[capacity];
+        rooms = new MyArray(capacity);
     }
 
     public String toString() {
@@ -21,7 +21,7 @@ public abstract class Apartment {
         return false;
     }
 
-    public Room[] getRooms() {
+    public MyArray getRooms() {
         return rooms;
     }
 

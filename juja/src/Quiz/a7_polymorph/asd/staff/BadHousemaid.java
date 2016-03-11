@@ -7,6 +7,6 @@ public class BadHousemaid extends Housemaid {
     @Override
     public void clean(Apartment apartment) {
         super.clean(apartment);
-        System.out.println("Sleping at " + apartment.getRooms()[4]);
+        System.out.println("Sleping at " + apartment.getRooms().get(4));
     }
 }

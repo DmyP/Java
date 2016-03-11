@@ -10,14 +10,14 @@ import java.util.Random;
 public class MultiHouse {
 
     private static final int DEFAULT_FLOOR_CAPACITY = 4;
-    private Floor[] floors;
+    private MyArray floors;
 
     public MultiHouse(int countFloors) {
-        floors = new Floor[countFloors];
+        floors = new MyArray(countFloors);
         for (int i = 0; i < countFloors; i++) {
             Housemaid housemaid = findHousemaid();
-            floors[i] = new Floor(i + 1, DEFAULT_FLOOR_CAPACITY, housemaid);
-            housemaid.setFloor(floors[i]);
+            floors.set(i, new Floor(i + 1, DEFAULT_FLOOR_CAPACITY, housemaid));
+            housemaid.setFloor((Floor)floors.get(i));
         }
     }
 
@@ -29,19 +29,19 @@ public class MultiHouse {
         }
     }
 
-    public Floor get(int number) {
-        return floors[number - 1];
+    public Object get(int number) {
+        return floors.get(number - 1);
     }
 
     public String toString() {
         String result = "I am a MultiHouse with:\n";
-        for (Floor floor : floors) {
+        for (Object floor : floors.getArray()) {
             result += floor.toString();
         }
         return result;
     }
 
-    public void settle(Owner[] owners) {
+    public void settle(MyArray owners) {
         int ownerIndex = 0;
 
         while (true) {
@@ -51,9 +51,9 @@ public class MultiHouse {
 
                 int capacity = livingApartment.getCapacity();
                 for (int i = 0; i < capacity; i++) {
-                    livingApartment.addOwner(owners[ownerIndex]);
+                    livingApartment.addOwner((Owner)owners.get(ownerIndex));
                     ownerIndex++;
-                    if (ownerIndex >= owners.length) {
+                    if (ownerIndex >= owners.size()) {
                         return;
                     }
                 }
@@ -62,7 +62,8 @@ public class MultiHouse {
     }
 
     private Apartment findFreeApartment() {
-        for (Floor floor : floors) {
+        for (Object object : floors.getArray()) {
+            Floor floor = (Floor)object;
             Apartment app = floor.getFreeApartment();
             if (app != null) {
                 return app;
