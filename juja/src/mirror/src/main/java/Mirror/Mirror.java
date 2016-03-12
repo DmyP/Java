@@ -1,4 +1,4 @@
-package week3.Mirror;
+package Mirror;
 
 public class Mirror {
 
@@ -20,7 +20,11 @@ public class Mirror {
     }
 
     private boolean valid(int[][] array) {
-        // TODO implement me (TDD)
+
+        if (array == null || array[0] == null || array.length != array[0].length) return false;
+        if (array[1] != null && array[0].length != array[1].length) return false;
+
+
         return true;
     }
 

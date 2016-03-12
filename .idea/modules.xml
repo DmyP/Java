@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Java.iml" filepath="$PROJECT_DIR$/Java.iml" />
       <module fileurl="file://$PROJECT_DIR$/coursera/courseraTest.iml" filepath="$PROJECT_DIR$/coursera/courseraTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/java.iml" filepath="$PROJECT_DIR$/java.iml" />
       <module fileurl="file://$PROJECT_DIR$/juja/juja.iml" filepath="$PROJECT_DIR$/juja/juja.iml" />
+      <module fileurl="file://$PROJECT_DIR$/juja/src/mirror/mirror.iml" filepath="$PROJECT_DIR$/juja/src/mirror/mirror.iml" />
       <module fileurl="file://$PROJECT_DIR$/others/others.iml" filepath="$PROJECT_DIR$/others/others.iml" />
     </modules>
   </component>
