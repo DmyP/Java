@@ -7,9 +7,6 @@ import java.util.Arrays;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-/**
- * Created by oleksandr.baglai on 15.12.2015.
- */
 public class MirrorTest {
 
     @Test

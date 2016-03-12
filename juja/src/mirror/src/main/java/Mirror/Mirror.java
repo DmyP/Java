@@ -20,9 +20,10 @@ public class Mirror {
     }
 
     private boolean valid(int[][] array) {
-
-        if (array == null || array[0] == null || array.length != array[0].length) return false;
-        if (array[1] != null && array[0].length != array[1].length) return false;
+        if (array == null || (array.length != 0 && (array.length != array[array.length - 1].length))) return false;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].length == 0 || array[0].length != array[i].length || array[i] == null) return false;
+        }
 
 
         return true;
