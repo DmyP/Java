@@ -1,6 +1,6 @@
-package Quiz.a7_polymorph.asd;
+package Quiz.a7_polymorph.asd2.asd;
 
-import Quiz.a7_polymorph.asd.apartment.Apartment;
+import Quiz.a7_polymorph.asd2.asd.apartment.Apartment;
 
 public class Room /* extends Object */{
     private Apartment apartment;

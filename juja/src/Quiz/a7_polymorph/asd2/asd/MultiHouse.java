@@ -1,12 +1,18 @@
-package Quiz.a7_polymorph.asd;
+package Quiz.a7_polymorph.asd2.asd;
 
-import Quiz.a7_polymorph.asd.apartment.LivingApartment;
-import Quiz.a7_polymorph.asd.apartment.Apartment;
-import Quiz.a7_polymorph.asd.staff.BadHousemaid;
-import Quiz.a7_polymorph.asd.staff.Housemaid;
+import Quiz.a7_polymorph.asd2.asd.apartment.Apartment;
+import Quiz.a7_polymorph.asd2.asd.apartment.LivingApartment;
+import Quiz.a7_polymorph.asd2.asd.staff_strategy.DoNothingHousemaidStrategy;
+import Quiz.a7_polymorph.asd2.asd.staff_strategy.HousemaidStrategy;
+import Quiz.a7_polymorph.asd2.asd.staff_strategy.SleepingHousemaidStrategy;
+import Quiz.a7_polymorph.asd2.asd.staff_strategy.StrategyHousemaid;
+import Quiz.a7_polymorph.asd2.asd.staff.Housemaid;
 
 import java.util.Random;
 
+/**
+ * Created by indigo on 31.07.2015.
+ */
 public class MultiHouse {
 
     private static final int DEFAULT_FLOOR_CAPACITY = 4;
@@ -22,15 +28,17 @@ public class MultiHouse {
     }
 
     private Housemaid findHousemaid() {
+        HousemaidStrategy strategy = null;
         if (new Random().nextBoolean()) {
-            return new Housemaid();
+            strategy = new DoNothingHousemaidStrategy();
         } else {
-            return new BadHousemaid();
+            strategy = new SleepingHousemaidStrategy();
         }
+        return new StrategyHousemaid(strategy);
     }
 
-    public Object get(int number) {
-        return floors.get(number - 1);
+    public Floor get(int number) {
+        return (Floor)floors.get(number - 1);
     }
 
     public String toString() {

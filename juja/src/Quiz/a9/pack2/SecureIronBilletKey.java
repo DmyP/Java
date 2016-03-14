@@ -1,10 +1,7 @@
-package ua.com.juja.a9.pack2;
+package Quiz.a9.pack2;
 
 import java.util.Arrays;
 
-/**
- * Created by indigo on 10.08.2015.
- */
 public class SecureIronBilletKey extends IronBilletKey {
 
     private int[] notch1;

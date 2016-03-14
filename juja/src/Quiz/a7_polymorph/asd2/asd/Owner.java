@@ -1,7 +1,10 @@
-package Quiz.a7_polymorph.asd;
+package Quiz.a7_polymorph.asd2.asd;
 
-import Quiz.a6_oop.FIO;
+import ua.com.juja.a6_oop.FIO;
 
+/**
+ * Created by indigo on 31.07.2015.
+ */
 public class Owner {
     private FIO fio;
 

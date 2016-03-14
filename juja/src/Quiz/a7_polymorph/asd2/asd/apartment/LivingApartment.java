@@ -1,10 +1,13 @@
-package Quiz.a7_polymorph.asd.apartment;
+package Quiz.a7_polymorph.asd2.asd.apartment;
 
-import Quiz.a7_polymorph.asd.MyArray;
-import Quiz.a7_polymorph.asd.Owner;
-import Quiz.a7_polymorph.asd.Room;
-import Quiz.a7_polymorph.asd.RoomType;
+import Quiz.a7_polymorph.asd2.asd.MyArray;
+import Quiz.a7_polymorph.asd2.asd.Owner;
+import Quiz.a7_polymorph.asd2.asd.Room;
+import Quiz.a7_polymorph.asd2.asd.RoomType;
 
+/**
+ * Created by indigo on 31.07.2015.
+ */
 public class LivingApartment extends Apartment {
 
     private MyArray owners;
@@ -19,8 +22,7 @@ public class LivingApartment extends Apartment {
         rooms.set(1, new Room(RoomType.KITCHEN, this));
         rooms.set(2, new Room(RoomType.LIVING_ROOM, this));
 
-        for (int
-             i = 3; i < countRooms; i++) {
+        for (int i = 3; i < countRooms; i++) {
             rooms.set(i, new Room(RoomType.BEDROOM, this));
         }
     }
@@ -39,7 +41,7 @@ public class LivingApartment extends Apartment {
         if (i == -1) {
             throw new RuntimeException("LivingApartment is full!");
         }
-        owners.set(i,  owner);
+        owners.set(i, owner);
         System.out.println("Add owner " + owner + " to living apartment");
     }
 

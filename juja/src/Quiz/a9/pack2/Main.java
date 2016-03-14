@@ -1,8 +1,5 @@
-package ua.com.juja.a9.pack2;
+package Quiz.a9.pack2;
 
-/**
- * Created by indigo on 10.08.2015.
- */
 public class Main {
 
     public static void main(String[] args) {

@@ -1,10 +1,37 @@
 package Mirror;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Random;
+
 public class Mirror {
 
+    public static void main(String[] args) {
+        int[][] arr = new int[4][4];
+        int k = 1;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[arr.length - 1].length; j++) {
+                arr[i][j] = k++;
+            }
+        }
+        Mirror mirror = new Mirror();
+        mirror.prn(arr);
+
+        mirror.d2(arr);
+//       mirror.d1(arr);
+
+//        mirror.leftRight(arr);
+//        mirror.upDown(arr);
+//        mirror.upDown(arr);
+        mirror.prn(arr);
+
+    }
+
     public void upDown(int[][] array) {
+
         if (!valid(array)) {
             return;
+
         }
 
         for (int x = 0; x < array.length; x++) {
@@ -17,6 +44,13 @@ public class Mirror {
                 y2--;
             }
         }
+    }
+
+    private void prn(int[][] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.println(Arrays.toString(array[i]));
+        }
+        System.out.println("\n");
     }
 
     private boolean valid(int[][] array) {
@@ -71,15 +105,47 @@ public class Mirror {
         if (!valid(array)) {
             return;
         }
+        int ii = array.length - 1;
+        int jj = array.length - 1;
+        int[][] temp = new int[array.length][array.length];
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                temp[i][j] = array[jj][ii];
+                jj--;
+            }
+            jj = array.length - 1;
+            ii--;
+        }
 
-        // TODO implement me (TDD)
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                array[i][j] = temp[i][j];
+            }
+            // TODO implement me (TDD)
+        }
     }
 
     public void d2(int[][] array) {
         if (!valid(array)) {
             return;
         }
+        int ii = array.length - 1;
+        int jj = array.length - 1;
+        int[][] temp = new int[array.length][array.length];
+        for (int i = array.length - 1; i >= 0; i--) {
+            for (int j = array.length - 1; j >= 0;  j--) {
+                temp[i][j] = array[jj][ii];
+                jj--;
+            }
+            jj = array.length - 1;
+            ii--;
+        }
 
-        // TODO implement me (TDD)
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                array[i][j] = temp[i][j];
+            }
+            // TODO implement me (TDD)
+        }
     }
 }

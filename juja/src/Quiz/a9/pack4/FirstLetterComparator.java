@@ -1,8 +1,5 @@
-package ua.com.juja.a9.pack4;
+package Quiz.a9.pack4;
 
-/**
- * Created by indigo on 10.08.2015.
- */
 public class FirstLetterComparator implements Comparator {
 
     @Override

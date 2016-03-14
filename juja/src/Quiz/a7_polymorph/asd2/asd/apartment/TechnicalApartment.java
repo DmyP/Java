@@ -1,6 +1,6 @@
-package Quiz.a7_polymorph.asd.apartment;
+package Quiz.a7_polymorph.asd2.asd.apartment;
 
-import Quiz.a7_polymorph.asd.staff.HousemaidTools;
+import Quiz.a7_polymorph.asd2.asd.staff.HousemaidTools;
 
 public class TechnicalApartment extends Apartment {
 

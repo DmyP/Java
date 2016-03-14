@@ -1,7 +1,10 @@
-package Quiz.a7_polymorph.asd;
+package Quiz.a7_polymorph.asd2.asd;
 
-import Quiz.a6_oop.FIO;
+import Quiz.a7_polymorph.asd2;
 
+/**
+ * Created by indigo on 31.07.2015.
+ */
 public class Main extends Object {
     public static void main(String[] args) {
         MultiHouse multiHouse = new MultiHouse(2);

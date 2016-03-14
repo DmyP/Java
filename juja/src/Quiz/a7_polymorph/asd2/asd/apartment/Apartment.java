@@ -1,8 +1,8 @@
-package Quiz.a7_polymorph.asd.apartment;
+package Quiz.a7_polymorph.asd2.asd.apartment;
 
-import Quiz.a7_polymorph.asd.MyArray;
+import Quiz.a7_polymorph.asd2.asd.MyArray;
 
-public abstract class  Apartment {
+public abstract class Apartment {
 
     protected int number;
     protected MyArray rooms;

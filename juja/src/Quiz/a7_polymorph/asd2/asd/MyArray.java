@@ -1,6 +1,7 @@
-package Quiz.a7_polymorph.asd;
+package Quiz.a7_polymorph.asd2.asd;
 
 import java.util.Arrays;
+
 
 public class MyArray {
     private Object[] data;
@@ -9,7 +10,7 @@ public class MyArray {
         data = new Object[length];
     }
 
-    public MyArray(Quiz.a7_polymorph.asd.MyArray source) {
+    public MyArray(MyArray source) {
         data = new Object[source.data.length];
         for (int i = 0; i < source.data.length; i++) {
             data[i] = source.data[i];
@@ -51,8 +52,8 @@ public class MyArray {
         data = array2;
     }
 
-    public Quiz.a7_polymorph.asd.MyArray copy() {
-        return new Quiz.a7_polymorph.asd.MyArray(this);
+    public MyArray copy() {
+        return new MyArray(this);
     }
 
     public int size() {

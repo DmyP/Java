@@ -1,4 +1,4 @@
-package Quiz.a7_polymorph.asd.apartment;
+package Quiz.a7_polymorph.asd2.asd.apartment;
 
 public class YahooApartment extends Apartment {
     public YahooApartment(int number, int capacity) {

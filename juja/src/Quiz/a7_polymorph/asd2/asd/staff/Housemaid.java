@@ -1,8 +1,9 @@
-package Quiz.a7_polymorph.asd.staff;
+package Quiz.a7_polymorph.asd2.asd.staff;
 
-import Quiz.a7_polymorph.asd.Floor;
-import Quiz.a7_polymorph.asd.apartment.Apartment;
-import Quiz.a7_polymorph.asd.apartment.TechnicalApartment;
+import Quiz.a7_polymorph.asd2.asd.Floor;
+import Quiz.a7_polymorph.asd2.asd.Room;
+import Quiz.a7_polymorph.asd2.asd.apartment.Apartment;
+import Quiz.a7_polymorph.asd2.asd.apartment.TechnicalApartment;
 
 public class Housemaid {
 
@@ -15,7 +16,7 @@ public class Housemaid {
             tools = techApartment.getTools();
         }
         for (Object room : apartment.getRooms().getArray()) {
-            tools.clean(room);
+            tools.clean((Room)room); // TODO remove class cast
         }
     }
 
