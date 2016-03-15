@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/HeadFirstDesignPatterns_code102507/HeadFirstDesignPatterns_code102507.iml" filepath="$PROJECT_DIR$/HeadFirstDesignPatterns_code102507/HeadFirstDesignPatterns_code102507.iml" />
       <module fileurl="file://$PROJECT_DIR$/Java.iml" filepath="$PROJECT_DIR$/Java.iml" />
       <module fileurl="file://$PROJECT_DIR$/coursera/courseraTest.iml" filepath="$PROJECT_DIR$/coursera/courseraTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/juja/juja.iml" filepath="$PROJECT_DIR$/juja/juja.iml" />
