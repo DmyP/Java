@@ -1,6 +1,6 @@
 package Quiz.a7_polymorph.asd2.asd;
 
-import Quiz.a7_polymorph.asd2;
+import Quiz.a6_oop.FIO;
 
 /**
  * Created by indigo on 31.07.2015.
