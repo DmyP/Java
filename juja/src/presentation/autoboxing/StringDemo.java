@@ -3,9 +3,9 @@ package presentation.autoboxing;
 public class StringDemo {
     public static void main(String[] args) {
 //        constantPoolDemo();
-//        reverseDemo();
+        reverseDemo();
 //        substringDemo();
-        replaceDemo();
+//        replaceDemo();
     }
 
     private static void replaceDemo() {

@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/coursera/HF_DP.iml" filepath="$PROJECT_DIR$/coursera/HF_DP.iml" />
       <module fileurl="file://$PROJECT_DIR$/Java.iml" filepath="$PROJECT_DIR$/Java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaRushHomeWork/JavaRushHomeWork.iml" filepath="$PROJECT_DIR$/JavaRushHomeWork/JavaRushHomeWork.iml" />
       <module fileurl="file://$PROJECT_DIR$/juja/juja.iml" filepath="$PROJECT_DIR$/juja/juja.iml" />
       <module fileurl="file://$PROJECT_DIR$/juja/src/mirror/mirror.iml" filepath="$PROJECT_DIR$/juja/src/mirror/mirror.iml" />
     </modules>

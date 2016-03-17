@@ -12,7 +12,7 @@ public class SingletonEager {
         return instance;
     }
 }
-
+//
 //class SingletonSubclass extends SingletonEager{
 //
 //}
