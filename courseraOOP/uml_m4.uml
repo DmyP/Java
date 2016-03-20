@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>module4.CityMarker</OriginalElement>
+  <nodes>
+    <node x="132.0" y="432.0">de.fhpotsdam.unfolding.marker.AbstractMarker</node>
+    <node x="160.0" y="1386.0">module4.EarthquakeMarker</node>
+    <node x="347.0" y="1753.0">module4.LandQuakeMarker</node>
+    <node x="544.0" y="1474.0">module4.CityMarker</node>
+    <node x="0.0" y="1764.5">module4.OceanQuakeMarker</node>
+    <node x="402.5" y="1217.0">de.fhpotsdam.unfolding.marker.SimplePointMarker</node>
+    <node x="229.5" y="0.0">de.fhpotsdam.unfolding.marker.Marker</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="module4.EarthquakeMarker" target="de.fhpotsdam.unfolding.marker.SimplePointMarker">
+      <point x="0.0" y="-158.5" />
+      <point x="342.0" y="1361.0" />
+      <point x="448.5" y="1361.0" />
+      <point x="-46.0" y="59.5" />
+    </edge>
+    <edge source="de.fhpotsdam.unfolding.marker.SimplePointMarker" target="de.fhpotsdam.unfolding.marker.AbstractMarker">
+      <point x="0.0" y="-59.5" />
+      <point x="0.0" y="367.5" />
+    </edge>
+    <edge source="de.fhpotsdam.unfolding.marker.AbstractMarker" target="de.fhpotsdam.unfolding.marker.Marker">
+      <point x="0.0" y="-367.5" />
+      <point x="0.0" y="191.0" />
+    </edge>
+    <edge source="module4.CityMarker" target="de.fhpotsdam.unfolding.marker.SimplePointMarker">
+      <point x="0.0" y="-70.5" />
+      <point x="647.0" y="1361.0" />
+      <point x="540.5" y="1361.0" />
+      <point x="46.0" y="59.5" />
+    </edge>
+    <edge source="module4.LandQuakeMarker" target="module4.EarthquakeMarker">
+      <point x="0.0" y="-37.0" />
+      <point x="520.5" y="1728.0" />
+      <point x="433.0" y="1728.0" />
+      <point x="91.0" y="158.5" />
+    </edge>
+    <edge source="module4.OceanQuakeMarker" target="module4.EarthquakeMarker">
+      <point x="0.0" y="-25.5" />
+      <point x="163.5" y="1728.0" />
+      <point x="251.0" y="1728.0" />
+      <point x="-91.0" y="158.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8" x="196.5" y="1512.875" />
+  <SelectedNodes>
+    <node>module4.CityMarker</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Inner Classes</Category>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

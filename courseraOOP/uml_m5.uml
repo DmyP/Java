@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>module5.CityMarker</OriginalElement>
+  <nodes>
+    <node x="135.25" y="432.0">de.fhpotsdam.unfolding.marker.AbstractMarker</node>
+    <node x="193.5" y="1408.5">module5.CommonMarker</node>
+    <node x="530.5" y="1386.0">module5.CityMarker</node>
+    <node x="367.0" y="2043.5">module5.OceanQuakeMarker</node>
+    <node x="405.75" y="1217.0">de.fhpotsdam.unfolding.marker.SimplePointMarker</node>
+    <node x="232.75" y="0.0">de.fhpotsdam.unfolding.marker.Marker</node>
+    <node x="140.0" y="1599.0">module5.EarthquakeMarker</node>
+    <node x="0.0" y="2032.0">module5.LandQuakeMarker</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="module5.OceanQuakeMarker" target="module5.EarthquakeMarker">
+      <point x="0.0" y="-25.5" />
+      <point x="530.5" y="2007.0" />
+      <point x="458.0" y="2007.0" />
+      <point x="106.0" y="191.5" />
+    </edge>
+    <edge source="de.fhpotsdam.unfolding.marker.SimplePointMarker" target="de.fhpotsdam.unfolding.marker.AbstractMarker">
+      <point x="0.0" y="-59.5" />
+      <point x="0.0" y="367.5" />
+    </edge>
+    <edge source="module5.CommonMarker" target="de.fhpotsdam.unfolding.marker.SimplePointMarker">
+      <point x="0.0" y="-59.0" />
+      <point x="352.0" y="1361.0" />
+      <point x="451.75" y="1361.0" />
+      <point x="-46.0" y="59.5" />
+    </edge>
+    <edge source="de.fhpotsdam.unfolding.marker.AbstractMarker" target="de.fhpotsdam.unfolding.marker.Marker">
+      <point x="0.0" y="-367.5" />
+      <point x="0.0" y="191.0" />
+    </edge>
+    <edge source="module5.EarthquakeMarker" target="module5.CommonMarker">
+      <point x="0.0" y="-191.5" />
+      <point x="0.0" y="59.0" />
+    </edge>
+    <edge source="module5.LandQuakeMarker" target="module5.EarthquakeMarker">
+      <point x="0.0" y="-37.0" />
+      <point x="173.5" y="2007.0" />
+      <point x="246.0" y="2007.0" />
+      <point x="-106.0" y="191.5" />
+    </edge>
+    <edge source="module5.CityMarker" target="de.fhpotsdam.unfolding.marker.SimplePointMarker">
+      <point x="0.0" y="-81.5" />
+      <point x="643.5" y="1361.0" />
+      <point x="543.75" y="1361.0" />
+      <point x="46.0" y="59.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8" x="191.5" y="1632.875" />
+  <SelectedNodes>
+    <node>module5.CityMarker</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Inner Classes</Category>
+    <Category>Fields</Category>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
