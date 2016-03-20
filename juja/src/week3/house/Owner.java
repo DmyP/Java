@@ -1,8 +1,5 @@
-package ua.com.juja;
+package week3.house;
 
-/**
- * Created by apofig on 2015-08-13.
- */
 public class Owner {
 
     protected final String name;

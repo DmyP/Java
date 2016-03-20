@@ -177,7 +177,7 @@ public class MirrorTest {
         mirror.upDown(array);
 
         // then
-        assertEquals( // TODO подумать над этим безобразием :)
+        assertEquals(
                 "2122232425\n" +
                 "1617181920\n" +
                 "1112131415\n" +

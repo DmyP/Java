@@ -1,12 +1,9 @@
-package ua.com.juja;
+package week3.house;
 
-import ua.com.juja.apartment.LivingApartment;
-import ua.com.juja.staff.Cleaner;
-import ua.com.juja.staff.Housemaid;
+import week3.house.apartment.LivingApartment;
+import week3.house.staff.Cleaner;
+import week3.house.staff.Housemaid;
 
-/**
- * Created by apofig on 2015-08-13.
- */
 public class House {
 
     private Floor[] floors;

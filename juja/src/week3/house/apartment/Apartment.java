@@ -1,8 +1,5 @@
-package ua.com.juja.apartment;
+package week3.house.apartment;
 
-/**
- * Created by apofig on 2015-08-13.
- */
 public abstract class Apartment {
 
     private int number;

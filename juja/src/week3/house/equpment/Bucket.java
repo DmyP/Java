@@ -1,8 +1,5 @@
-package ua.com.juja.equpment;
+package week3.house.equpment;
 
-/**
- * Created by apofig on 2015-08-13.
- */
 public class Bucket implements Equipment {
 
     @Override

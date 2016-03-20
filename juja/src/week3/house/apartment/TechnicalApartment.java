@@ -1,9 +1,9 @@
-package ua.com.juja.apartment;
+package week3.house.apartment;
 
-import ua.com.juja.equpment.Bucket;
-import ua.com.juja.equpment.Equipment;
-import ua.com.juja.equpment.Extinguisher;
-import ua.com.juja.equpment.Swob;
+import week3.house.equpment.Bucket;
+import week3.house.equpment.Equipment;
+import week3.house.equpment.Extinguisher;
+import week3.house.equpment.Swob;
 
 import java.util.Arrays;
 

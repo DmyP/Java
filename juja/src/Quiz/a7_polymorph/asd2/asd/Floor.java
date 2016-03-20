@@ -34,7 +34,7 @@ public class Floor {
         return result;
     }
 
-    // TODO check is copying ok?
+
     public Object[] getApartments() {
         return apartments.getArray();
     }

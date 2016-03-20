@@ -55,7 +55,7 @@ public class MultiHouse {
         while (true) {
             Apartment app = findFreeApartment();
             if (app.isFree() && app instanceof LivingApartment) {
-                LivingApartment livingApartment = (LivingApartment)app; // TODO remove
+                LivingApartment livingApartment = (LivingApartment)app;
 
                 int capacity = livingApartment.getCapacity();
                 for (int i = 0; i < capacity; i++) {

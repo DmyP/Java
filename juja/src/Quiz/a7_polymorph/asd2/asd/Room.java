@@ -5,7 +5,7 @@ import Quiz.a7_polymorph.asd2.asd.apartment.Apartment;
 public class Room /* extends Object */{
     private Apartment apartment;
     private RoomType type;
-    private MyArray objects; // TODO implement me
+    private MyArray objects;
 
     public Room(RoomType type, Apartment apartment) {
         this.apartment = apartment;

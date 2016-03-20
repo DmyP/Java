@@ -1,7 +1,7 @@
-package ua.com.juja.apartment;
+package week3.house.apartment;
 
-import ua.com.juja.Owner;
-import ua.com.juja.apartment.printer.Printer;
+import week3.house.Owner;
+import week3.house.apartment.printer.Printer;
 
 /**
  * Created by apofig on 2015-08-13.

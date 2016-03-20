@@ -16,7 +16,7 @@ public class Housemaid {
             tools = techApartment.getTools();
         }
         for (Object room : apartment.getRooms().getArray()) {
-            tools.clean((Room)room); // TODO remove class cast
+            tools.clean((Room)room);
         }
     }
 

@@ -1,13 +1,10 @@
-package ua.com.juja;
+package week3.house;
 
-import ua.com.juja.apartment.Apartment;
-import ua.com.juja.staff.Cleaner;
-import ua.com.juja.staff.Housemaid;
-import ua.com.juja.staff.RoboCleaner;
+import week3.house.apartment.Apartment;
+import week3.house.staff.Cleaner;
+import week3.house.staff.Housemaid;
+import week3.house.staff.RoboCleaner;
 
-/**
- * Created by apofig on 2015-08-13.
- */
 public class Main {
     public static void main(String[] args) {
         House house = new House(8, 3);
