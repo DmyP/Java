@@ -49,7 +49,7 @@ public class LifeExpectancy extends PApplet {
         String[] rows = loadStrings(fileName);
         for (String row : rows) {
             String[] columns = row.split(",");
-            if(columns.length == 6 && !columns[5].equals("..")){
+            if(columns.length == 6 && !columns[5].equals("")){
                 float value = Float.parseFloat(columns[5]);
                 lifeExpMap.put(columns[4], value);
             }
