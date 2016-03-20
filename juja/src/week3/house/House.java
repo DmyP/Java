@@ -7,7 +7,7 @@ import week3.house.staff.Housemaid;
 public class House {
 
     private Floor[] floors;
-    private Cleaner[] cleaners; // TODO ? ??? ???? ?????? ?? Floor
+    private Cleaner[] cleaners;
 
     public House(int floorsCount, int apartmentsOnFloor) {
         NumberGenerator numbers = new NumberGenerator();

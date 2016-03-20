@@ -1,8 +1,10 @@
 package module6;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
+
 
 import de.fhpotsdam.unfolding.UnfoldingMap;
 import de.fhpotsdam.unfolding.data.Feature;
@@ -25,121 +27,157 @@ import processing.core.PApplet;
  * Date: July 17, 2015
  * */
 public class EarthquakeCityMap extends PApplet {
-	
-	// We will use member variables, instead of local variables, to store the data
-	// that the setUp and draw methods will need to access (as well as other methods)
-	// You will use many of these variables, but the only one you should need to add
-	// code to modify is countryQuakes, where you will store the number of earthquakes
-	// per country.
-	
-	// You can ignore this.  It's to get rid of eclipse warnings
-	private static final long serialVersionUID = 1L;
 
-	// IF YOU ARE WORKING OFFILINE, change the value of this variable to true
-	private static final boolean offline = false;
-	
-	/** This is where to find the local tiles, for working without an Internet connection */
-	public static String mbTilesString = "blankLight-1-3.mbtiles";
-	
-	
+    // We will use member variables, instead of local variables, to store the data
+    // that the setUp and draw methods will need to access (as well as other methods)
+    // You will use many of these variables, but the only one you should need to add
+    // code to modify is countryQuakes, where you will store the number of earthquakes
+    // per country.
 
-	//feed with magnitude 2.5+ Earthquakes
-	private String earthquakesURL = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.atom";
-	
-	// The files containing city names and info and country names and info
-	private String cityFile = "city-data.json";
-	private String countryFile = "countries.geo.json";
-	
-	// The map
-	private UnfoldingMap map;
-	
-	// Markers for each city
-	private List<Marker> cityMarkers;
-	// Markers for each earthquake
-	private List<Marker> quakeMarkers;
+    // You can ignore this.  It's to get rid of eclipse warnings
+    private static final long serialVersionUID = 1L;
 
-	// A List of country markers
-	private List<Marker> countryMarkers;
-	
-	// NEW IN MODULE 5
-	private CommonMarker lastSelected;
-	private CommonMarker lastClicked;
-	
-	public void setup() {		
-		// (1) Initializing canvas and map tiles
-		size(900, 700, OPENGL);
-		if (offline) {
-		    map = new UnfoldingMap(this, 200, 50, 650, 600, new MBTilesMapProvider(mbTilesString));
-		    earthquakesURL = "2.5_week.atom";  // The same feed, but saved August 7, 2015
-		}
-		else {
-			map = new UnfoldingMap(this, 200, 50, 650, 600, new Google.GoogleMapProvider());
-			// IF YOU WANT TO TEST WITH A LOCAL FILE, uncomment the next line
-		    //earthquakesURL = "2.5_week.atom";
-		}
-		MapUtils.createDefaultEventDispatcher(this, map);
-		
-		// FOR TESTING: Set earthquakesURL to be one of the testing files by uncommenting
-		// one of the lines below.  This will work whether you are online or offline
-		//earthquakesURL = "test1.atom";
-		//earthquakesURL = "test2.atom";
-		
-		// Uncomment this line to take the quiz
-		//earthquakesURL = "quiz2.atom";
-		
-		
-		// (2) Reading in earthquake data and geometric properties
-	    //     STEP 1: load country features and markers
-		List<Feature> countries = GeoJSONReader.loadData(this, countryFile);
-		countryMarkers = MapUtils.createSimpleMarkers(countries);
-		
-		//     STEP 2: read in city data
-		List<Feature> cities = GeoJSONReader.loadData(this, cityFile);
-		cityMarkers = new ArrayList<Marker>();
-		for(Feature city : cities) {
-		  cityMarkers.add(new CityMarker(city));
-		}
-	    
-		//     STEP 3: read in earthquake RSS feed
-	    List<PointFeature> earthquakes = ParseFeed.parseEarthquake(this, earthquakesURL);
-	    quakeMarkers = new ArrayList<Marker>();
-	    
-	    for(PointFeature feature : earthquakes) {
-		  //check if LandQuake
-		  if(isLand(feature)) {
-		    quakeMarkers.add(new LandQuakeMarker(feature));
-		  }
-		  // OceanQuakes
-		  else {
-		    quakeMarkers.add(new OceanQuakeMarker(feature));
-		  }
-	    }
+    // IF YOU ARE WORKING OFFILINE, change the value of this variable to true
+    private static final boolean offline = false;
 
-	    // could be used for debugging
-	    printQuakes();
-	 		
-	    // (3) Add markers to map
-	    //     NOTE: Country markers are not added to the map.  They are used
-	    //           for their geometric properties
-	    map.addMarkers(quakeMarkers);
-	    map.addMarkers(cityMarkers);
-	    
-	    
-	}  // End setup
-	
-	
-	public void draw() {
-		background(0);
-		map.draw();
-		addKey();
-		
-	}
-	
-	
-	// TODO: Add the method:
-	//   private void sortAndPrint(int numToPrint)
-	// and then call that method from setUp
-	
+    /**
+     * This is where to find the local tiles, for working without an Internet connection
+     */
+    public static String mbTilesString = "blankLight-1-3.mbtiles";
+
+
+    //feed with magnitude 2.5+ Earthquakes
+    private String earthquakesURL = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.atom";
+
+    // The files containing city names and info and country names and info
+    private String cityFile = "city-data.json";
+    private String countryFile = "countries.geo.json";
+
+    // The map
+    private UnfoldingMap map;
+
+    // Markers for each city
+    private List<Marker> cityMarkers;
+    // Markers for each earthquake
+    private List<Marker> quakeMarkers;
+
+    // A List of country markers
+    private List<Marker> countryMarkers;
+
+    // NEW IN MODULE 5
+    private CommonMarker lastSelected;
+    private CommonMarker lastClicked;
+
+    public void setup() {
+        // (1) Initializing canvas and map tiles
+        size(900, 700, OPENGL);
+        if (offline) {
+            map = new UnfoldingMap(this, 200, 50, 650, 600, new MBTilesMapProvider(mbTilesString));
+            earthquakesURL = "2.5_week.atom";  // The same feed, but saved August 7, 2015
+        } else {
+            map = new UnfoldingMap(this, 200, 50, 650, 600, new Google.GoogleMapProvider());
+            // IF YOU WANT TO TEST WITH A LOCAL FILE, uncomment the next line
+            //earthquakesURL = "2.5_week.atom";
+        }
+        MapUtils.createDefaultEventDispatcher(this, map);
+
+        // FOR TESTING: Set earthquakesURL to be one of the testing files by uncommenting
+        // one of the lines below.  This will work whether you are online or offline
+        //earthquakesURL = "test1.atom";
+        earthquakesURL = "test2.atom";
+
+        // Uncomment this line to take the quiz
+        //earthquakesURL = "quiz2.atom";
+
+
+        // (2) Reading in earthquake data and geometric properties
+        //     STEP 1: load country features and markers
+        List<Feature> countries = GeoJSONReader.loadData(this, countryFile);
+        countryMarkers = MapUtils.createSimpleMarkers(countries);
+
+        //     STEP 2: read in city data
+        List<Feature> cities = GeoJSONReader.loadData(this, cityFile);
+        cityMarkers = new ArrayList<Marker>();
+        for (Feature city : cities) {
+            cityMarkers.add(new CityMarker(city));
+        }
+
+        //     STEP 3: read in earthquake RSS feed
+        List<PointFeature> earthquakes = ParseFeed.parseEarthquake(this, earthquakesURL);
+        quakeMarkers = new ArrayList<Marker>();
+
+        for (PointFeature feature : earthquakes) {
+            //check if LandQuake
+            if (isLand(feature)) {
+                quakeMarkers.add(new LandQuakeMarker(feature));
+            }
+            // OceanQuakes
+            else {
+                quakeMarkers.add(new OceanQuakeMarker(feature));
+            }
+        }
+        // could be used for debugging
+        // printQuakes();
+        sortAndPrint(8);
+        System.out.println("1");
+
+        // (3) Add markers to map
+        //     NOTE: Country markers are not added to the map.  They are used
+        //           for their geometric properties
+
+        map.addMarkers(quakeMarkers);
+        map.addMarkers(cityMarkers);
+
+
+    }  // End setup
+
+
+    public void draw() {
+        background(0);
+        map.draw();
+        addKey();
+
+    }
+
+
+    // TODO: Add the method:
+    private void sortAndPrint(int numToPrint) {
+
+
+
+        Marker[] sortedEearthquakes = {};
+        sortedEearthquakes = quakeMarkers.toArray(new Marker[quakeMarkers.size()]);
+        int currInd;
+        Marker tempMarker;
+        for (int i = 1; i < sortedEearthquakes.length; i++) {
+            currInd = i;
+            float fPrew = Float.parseFloat(sortedEearthquakes[currInd - 1].getProperty("magnitude").toString());
+            float fCur = Float.parseFloat(sortedEearthquakes[currInd].getProperty("magnitude").toString());
+
+            while (currInd > 0 && fCur > fPrew ) {
+                tempMarker = sortedEearthquakes[currInd - 1];
+                sortedEearthquakes[currInd - 1] = sortedEearthquakes[currInd];
+                sortedEearthquakes[currInd] = tempMarker;
+                if (currInd > 1) {
+                    currInd = currInd - 1;
+                }
+                fPrew = Float.parseFloat(sortedEearthquakes[currInd - 1].getProperty("magnitude").toString());
+                fCur = Float.parseFloat(sortedEearthquakes[currInd].getProperty("magnitude").toString());
+            }
+        }
+        System.out.println(numToPrint);
+        if (numToPrint > sortedEearthquakes.length) numToPrint = sortedEearthquakes.length;
+        for (int i = 0; i < numToPrint; i++) {
+            System.out.println(i + " " + sortedEearthquakes[i]);
+
+        }
+
+
+
+    }
+
+    // and then call that method from setUp
+
 	/** Event handler that gets called automatically when the 
 	 * mouse moves.
 	 */

@@ -9,7 +9,6 @@ import de.fhpotsdam.unfolding.data.PointFeature;
 import de.fhpotsdam.unfolding.data.ShapeFeature;
 import de.fhpotsdam.unfolding.marker.Marker;
 import de.fhpotsdam.unfolding.marker.SimpleLinesMarker;
-import de.fhpotsdam.unfolding.marker.SimplePointMarker;
 import de.fhpotsdam.unfolding.utils.MapUtils;
 import de.fhpotsdam.unfolding.geo.Location;
 import parsing.ParseFeed;
@@ -26,13 +25,16 @@ public class AirportMap extends PApplet {
 	UnfoldingMap map;
 	private List<Marker> airportList;
 	List<Marker> routeList;
-	
+
+	private AirportMarker lastSelected;
+	private AirportMarker lastClicked;
+
 	public void setup() {
 		// setting up PAppler
-		size(800,600, OPENGL);
+		size(1280,700, OPENGL);
 		
 		// setting up map and default events
-		map = new UnfoldingMap(this, 50, 50, 750, 550);
+		map = new UnfoldingMap(this, 8, 10, 1264, 680);
 		MapUtils.createDefaultEventDispatcher(this, map);
 		
 		// get features from airport data
@@ -72,17 +74,19 @@ public class AirportMap extends PApplet {
 			
 			SimpleLinesMarker sl = new SimpleLinesMarker(route.getLocations(), route.getProperties());
 		
-			System.out.println(sl.getProperties());
+		//	System.out.println(sl.getProperties());
 			
 			//UNCOMMENT IF YOU WANT TO SEE ALL ROUTES
-			//routeList.add(sl);
+
+			routeList.add(sl);
+
 		}
 		
 		
 		
 		//UNCOMMENT IF YOU WANT TO SEE ALL ROUTES
-		//map.addMarkers(routeList);
-		
+		hideMarkers();
+		map.addMarkers(routeList);
 		map.addMarkers(airportList);
 		
 	}
@@ -90,8 +94,68 @@ public class AirportMap extends PApplet {
 	public void draw() {
 		background(0);
 		map.draw();
+
 		
 	}
-	
 
+	@Override
+	public void mouseMoved() {
+		if (lastSelected != null) {
+			lastSelected.setSelected(false);
+			lastSelected = null;
+		}
+		selectMarkerIfHover(airportList);
+	}
+
+	private void selectMarkerIfHover(List<Marker> markers) {
+
+		if (lastSelected != null) return;
+		for (Marker m : markers) {
+			AirportMarker marker = (AirportMarker) m;
+			if (marker.isInside(map, mouseX, mouseY)) {
+				lastSelected = marker;
+				marker.setSelected(true);
+				return;
+			}
+		}
+	}
+
+	@Override
+	public void mouseClicked() {
+		if (lastClicked != null) {
+			hideMarkers();
+			lastClicked = null;
+		} else if (lastClicked == null) {
+			checkAirportsForClick();
+		}
+	}
+
+	private void checkAirportsForClick()
+	{
+		hideMarkers();
+		for (Marker marker : airportList) {
+			if (marker.isInside(map, mouseX, mouseY)) {
+				System.out.println(marker.getLocation().x);
+				for (Marker route : routeList) {
+					if ((marker.getLocation().x == ((SimpleLinesMarker) route).getLocations().get(0).x) &&
+					(marker.getLocation().y == ((SimpleLinesMarker) route).getLocations().get(0).y)) {
+						route.setHidden(false);
+					}
+
+				}
+			}
+		}
+	}
+
+	private void unhideMarkers() {
+		for (Marker marker : routeList) {
+			marker.setHidden(false);
+		}
+	}
+
+	private void hideMarkers() {
+		for (Marker marker : routeList) {
+			marker.setHidden(true);
+		}
+	}
 }
