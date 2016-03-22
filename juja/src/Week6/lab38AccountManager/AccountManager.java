@@ -1,4 +1,4 @@
-package Week6.lab38AccountManager;
+package week6.lab38AccountManager;
 
 /*
     Для работы с банковским счетом отдельного пользователя был разработан абстрактный класс Account.
@@ -23,10 +23,33 @@ package Week6.lab38AccountManager;
     false - во всех остальных случаях.
 */
 public class AccountManager {
+
     public static boolean transfer(Account[] accounts, int[] delta) {
-        /*BODY*/
-        return false;
+        for (int i = 0; i < accounts.length; i++) {
+                try {
+                    accounts[i].change(0);
+                } catch (TryAgainException e) {
+                    continue;
+                } catch (BlockAccountException e) {
+                    return false;
+                }
+        }
+
+        for (int k = 0; k < accounts.length ; k++) {
+            try {
+                accounts[k].change(delta[k]);
+            } catch (TryAgainException e) {
+                k = k - 1;
+                continue;
+            } catch (BlockAccountException e) {
+                return false;
+            }
+        }
+
+        return true;
     }
+
+
 }
 
 abstract class Account {
@@ -48,4 +71,5 @@ class TryAgainException extends Exception {
 }
 
 class BlockAccountException extends Exception {
+
 }
