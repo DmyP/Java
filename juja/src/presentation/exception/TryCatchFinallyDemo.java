@@ -6,6 +6,13 @@ import java.io.IOException;
 public class TryCatchFinallyDemo {
 
     public static void main(String[] args) {
+//        try2();
+        tryWithResourcesDemo();
+//        tryCatchFinallyPolymorph();
+
+    }
+
+    private static void try2() {
         try {
             System.err.print(" 0");
             if (true) {
@@ -64,6 +71,6 @@ class CloseableDemo implements Closeable {
 
     @Override
     public void close() {
-        System.out.println("I am closing ");
+        System.err.println("I am closing ");
     }
 }
