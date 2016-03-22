@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>module5.CityMarker</OriginalElement>
+  <nodes>
+    <node x="127.5" y="79.0">de.fhpotsdam.unfolding.marker.AbstractMarker</node>
+    <node x="194.5" y="479.0">module5.CommonMarker</node>
+    <node x="319.75" y="646.0">module5.CityMarker</node>
+    <node x="195.5" y="378.0">de.fhpotsdam.unfolding.marker.SimplePointMarker</node>
+    <node x="165.0" y="813.0">module5.OceanQuakeMarker</node>
+    <node x="232.5" y="0.0">de.fhpotsdam.unfolding.marker.Marker</node>
+    <node x="14.75" y="580.0">module5.EarthquakeMarker</node>
+    <node x="0.0" y="813.0">module5.LandQuakeMarker</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="module5.CityMarker" target="module5.CommonMarker">
+      <point x="0.0" y="-25.5" />
+      <point x="382.75" y="555.0" />
+      <point x="307.75" y="555.0" />
+      <point x="37.75" y="25.5" />
+    </edge>
+    <edge source="module5.OceanQuakeMarker" target="module5.EarthquakeMarker">
+      <point x="0.0" y="-14.5" />
+      <point x="242.0" y="788.0" />
+      <point x="228.5" y="788.0" />
+      <point x="71.25" y="91.5" />
+    </edge>
+    <edge source="de.fhpotsdam.unfolding.marker.SimplePointMarker" target="de.fhpotsdam.unfolding.marker.AbstractMarker">
+      <point x="0.0" y="-25.5" />
+      <point x="0.0" y="124.5" />
+    </edge>
+    <edge source="module5.CommonMarker" target="de.fhpotsdam.unfolding.marker.SimplePointMarker">
+      <point x="0.0" y="-25.5" />
+      <point x="0.0" y="25.5" />
+    </edge>
+    <edge source="de.fhpotsdam.unfolding.marker.AbstractMarker" target="de.fhpotsdam.unfolding.marker.Marker">
+      <point x="0.0" y="-124.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="module5.EarthquakeMarker" target="module5.CommonMarker">
+      <point x="0.0" y="-91.5" />
+      <point x="157.25" y="555.0" />
+      <point x="232.25" y="555.0" />
+      <point x="-37.75" y="25.5" />
+    </edge>
+    <edge source="module5.LandQuakeMarker" target="module5.EarthquakeMarker">
+      <point x="0.0" y="-14.5" />
+      <point x="72.5" y="788.0" />
+      <point x="86.0" y="788.0" />
+      <point x="-71.25" y="91.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.6000000000000001" x="283.4999999999999" y="442.33333333333326" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>module6.AirportMarker</OriginalElement>
+  <nodes>
+    <node x="455.875" y="646.0">module6.AirportMarker</node>
+    <node x="146.0" y="79.0">de.fhpotsdam.unfolding.marker.AbstractMarker</node>
+    <node x="478.875" y="813.0">module6.AirportMap</node>
+    <node x="296.25" y="846.0">module6.OceanQuakeMarker</node>
+    <node x="757.875" y="0.0">module6.LifeExpectancy</node>
+    <node x="146.0" y="580.0">module6.EarthquakeMarker</node>
+    <node x="0.0" y="646.0">module6.CityMarker</node>
+    <node x="214.0" y="378.0">de.fhpotsdam.unfolding.marker.SimplePointMarker</node>
+    <node x="251.0" y="0.0">de.fhpotsdam.unfolding.marker.Marker</node>
+    <node x="131.25" y="846.0">module6.LandQuakeMarker</node>
+    <node x="213.0" y="479.0">module6.CommonMarker</node>
+    <node x="7.375" y="958.0">module6.EarthquakeCityMap</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="module6.LandQuakeMarker" target="module6.EarthquakeMarker">
+      <point x="0.0" y="-14.5" />
+      <point x="203.75" y="788.0" />
+      <point x="217.25" y="788.0" />
+      <point x="-71.25" y="91.5" />
+    </edge>
+    <edge source="module6.CommonMarker" target="de.fhpotsdam.unfolding.marker.SimplePointMarker">
+      <point x="0.0" y="-25.5" />
+      <point x="0.0" y="25.5" />
+    </edge>
+    <edge source="module6.EarthquakeMarker" target="module6.CommonMarker">
+      <point x="0.0" y="-91.5" />
+      <point x="0.0" y="25.5" />
+    </edge>
+    <edge source="module6.CityMarker" target="module6.CommonMarker">
+      <point x="0.0" y="-25.5" />
+      <point x="63.0" y="555.0" />
+      <point x="238.16666666666669" y="555.0" />
+      <point x="-50.333333333333314" y="25.5" />
+    </edge>
+    <edge source="module6.OceanQuakeMarker" target="module6.EarthquakeMarker">
+      <point x="0.0" y="-14.5" />
+      <point x="373.25" y="788.0" />
+      <point x="359.75" y="788.0" />
+      <point x="71.25" y="91.5" />
+    </edge>
+    <edge source="module6.EarthquakeCityMap" target="module6.CityMarker">
+      <point x="-136.0" y="-146.5" />
+      <point x="75.375" y="933.0" />
+      <point x="63.0" y="933.0" />
+      <point x="0.0" y="25.5" />
+    </edge>
+    <edge source="module6.EarthquakeCityMap" target="module6.LandQuakeMarker">
+      <point x="0.0" y="-146.5" />
+      <point x="211.375" y="933.0" />
+      <point x="203.75" y="933.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="de.fhpotsdam.unfolding.marker.SimplePointMarker" target="de.fhpotsdam.unfolding.marker.AbstractMarker">
+      <point x="0.0" y="-25.5" />
+      <point x="0.0" y="124.5" />
+    </edge>
+    <edge source="module6.AirportMap" target="module6.AirportMarker">
+      <point x="0.0" y="-47.5" />
+      <point x="0.0" y="25.5" />
+    </edge>
+    <edge source="module6.EarthquakeCityMap" target="module6.OceanQuakeMarker">
+      <point x="136.0" y="-146.5" />
+      <point x="347.375" y="933.0" />
+      <point x="373.25" y="933.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="de.fhpotsdam.unfolding.marker.AbstractMarker" target="de.fhpotsdam.unfolding.marker.Marker">
+      <point x="0.0" y="-124.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="module6.AirportMarker" target="module6.CommonMarker">
+      <point x="0.0" y="-25.5" />
+      <point x="584.375" y="555.0" />
+      <point x="338.83333333333337" y="555.0" />
+      <point x="50.33333333333337" y="25.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.5432432432432432" x="265.7313432835821" y="690.7313432835821" />
+  <SelectedNodes>
+    <node>module6.EarthquakeCityMap</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Inner Classes</Category>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
