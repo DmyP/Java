@@ -1,13 +1,8 @@
-package com.apofig.sorting;
+package week2.sorting;
 
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * User: oleksandr.baglai
- * Date: 1/17/13
- * Time: 5:06 PM
- */
 public class Statistic {
 
     private Map<Operations, Integer> map = new HashMap<Operations, Integer>();

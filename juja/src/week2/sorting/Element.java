@@ -1,12 +1,5 @@
-package com.apofig.sorting;
+package week2.sorting;
 
-import java.util.Arrays;
-
-/**
- * User: oleksandr.baglai
- * Date: 1/17/13
- * Time: 4:14 PM
- */
 public class Element<T extends Comparable> {
     private T data;
     private int id;

@@ -1,6 +1,4 @@
-package ua.com.juja.a8_oop.array;
-
-import java.util.Arrays;
+package Quiz.a8_oop.array;
 
 /**
  * Created by indigo on 07.08.2015.

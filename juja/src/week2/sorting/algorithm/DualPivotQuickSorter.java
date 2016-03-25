@@ -1,15 +1,9 @@
-package com.apofig.sorting.algorithm;
+package week2.sorting.algorithm;
 
-import com.apofig.sorting.Array;
-import com.apofig.sorting.Element;
-import com.apofig.sorting.Sorter;
+import week2.sorting.Array;
+import week2.sorting.Element;
+import week2.sorting.Sorter;
 
-/**
- * Sample from http://iaroslavski.narod.ru/quicksort/DualPivotQuicksort.pdf
- *
- * @author Vladimir Yaroslavskiy
- * @version 2009.09.17 m765.817
- */
 public class DualPivotQuickSorter implements Sorter {
 
     @Override

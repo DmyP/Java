@@ -1,15 +1,9 @@
-package com.apofig.sorting.algorithm;
+package week2.sorting.algorithm;
 
-import com.apofig.sorting.Array;
-import com.apofig.sorting.ArrayImpl;
-import com.apofig.sorting.Sorter;
+import week2.sorting.Array;
+import week2.sorting.ArrayImpl;
+import week2.sorting.Sorter;
 
-/**
- * User: oleksandr.baglai
- * Date: 1/17/13
- * Time: 3:25 PM
- * First sample from http://www.java2novice.com/java-sorting-algorithms/merge-sort/
- */
 public class MergeSorter implements Sorter {
 
     private Array array;

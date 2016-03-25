@@ -1,12 +1,7 @@
-package com.apofig.sorting;
+package week2.sorting;
 
 import java.util.Arrays;
 
-/**
- * User: oleksandr.baglai
- * Date: 1/17/13
- * Time: 4:11 PM
- */
 public class ArrayImpl<T extends Comparable> implements Array<T>{
 
     private Element<T>[] elements;

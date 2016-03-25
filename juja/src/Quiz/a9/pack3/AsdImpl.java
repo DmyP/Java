@@ -1,4 +1,4 @@
-package ua.com.juja.a9.pack3;
+package Quiz.a9.pack3;
 
 /**
  * Created by indigo on 10.08.2015.

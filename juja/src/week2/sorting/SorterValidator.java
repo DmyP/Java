@@ -1,15 +1,8 @@
-package com.apofig.sorting;
+package week2.sorting;
 
 import java.util.Collection;
 import java.util.LinkedList;
 
-import static junit.framework.Assert.assertTrue;
-
-/**
- * User: oleksandr.baglai
- * Date: 1/17/13
- * Time: 9:36 PM
- */
 public class SorterValidator {
 
     public String assertThatStableSorting(Array<Integer> data) {

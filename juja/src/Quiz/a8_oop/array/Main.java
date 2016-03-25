@@ -1,4 +1,4 @@
-package ua.com.juja.a8_oop.array;
+package Quiz.a8_oop.array;
 
 import java.util.Arrays;
 

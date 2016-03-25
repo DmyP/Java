@@ -1,10 +1,5 @@
-package com.apofig.sorting;
+package week2.sorting;
 
-/**
- * User: oleksandr.baglai
- * Date: 1/17/13
- * Time: 4:58 PM
- */
 public interface ArrayRecorder<T extends Comparable> extends Array<T>{
     void stop();
 
