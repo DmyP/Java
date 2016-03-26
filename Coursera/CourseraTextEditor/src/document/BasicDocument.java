@@ -1,5 +1,7 @@
 package document;
 
+import java.util.List;
+
 /**
  * A naive implementation of the Document abstract class. 
  * @author UC San Diego Intermediate Programming MOOC team
@@ -26,9 +28,9 @@ public class BasicDocument extends Document
 	@Override
 	public int getNumWords()
 	{
-		//TODO: Implement this method.  See the Module 1 support videos 
-
-	    return 0;
+		String s = this.getText();
+		List<String> listS = this.getTokens("[a-zA-Z]+");
+	    return listS.size();
 	}
 	
 	/**
@@ -42,9 +44,15 @@ public class BasicDocument extends Document
 	@Override
 	public int getNumSentences()
 	{
-	    //TODO: Implement this method.  See the Module 1 support videos 
-        // if you need help.
-        return 0;
+		String s = this.getText();
+		List<String> listS = this.getTokens("[.!?]+");
+		int size = listS.size();
+		for (int i = s.length() - 1; i >= 0; i--) {
+			if (s.charAt(i) == ' ') {
+			} else if  ((s.charAt(i) != '.') && (s.charAt(i) != '!') && (s.charAt(i) != '?'))
+				size = size + 1; return size;
+		}
+		return size;
 	}
 	
 	/**
@@ -58,9 +66,13 @@ public class BasicDocument extends Document
 	@Override
 	public int getNumSyllables()
 	{
-	    //TODO: Implement this method.  See the Module 1 support videos 
-        // if you need help.
-        return 0;
+	  	int countSyllables = 0;
+		String s = this.getText();
+		List<String> listS = this.getTokens("[a-zA-Z]+");
+		for (int i = 0; i < listS.size(); i++) {
+			countSyllables = countSyllables + countSyllables(listS.get(i));
+		}
+		return countSyllables;
 	}
 	
 	

@@ -58,7 +58,9 @@ public class EfficientDocument extends Document {
 	@Override
 	public int getNumWords() {
 		//TODO: write this method.  Hint: It's simple
-	    return 0;
+
+
+		return 0;
 	}
 
 	/**

@@ -4,6 +4,7 @@ package document;
  * A class that represents a text document
  * @author UC San Diego Intermediate Programming MOOC team
  */
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -12,50 +13,86 @@ import java.util.regex.Pattern;
 public abstract class Document {
 
 	private String text;
-	
-	/** Create a new document from the given text.
+
+	/**
+	 * Create a new document from the given text.
 	 * Because this class is abstract, this is used only from subclasses.
+	 *
 	 * @param text The text of the document.
 	 */
-	protected Document(String text)
-	{
+	protected Document(String text) {
 		this.text = text;
 	}
-	
-	/** Returns the tokens that match the regex pattern from the document 
+
+	/**
+	 * Returns the tokens that match the regex pattern from the document
 	 * text string.
-	 * @param pattern A regular expression string specifying the 
-	 *   token pattern desired
-	 * @return A List of tokens from the document text that match the regex 
-	 *   pattern
+	 *
+	 * @param pattern A regular expression string specifying the
+	 *                token pattern desired
+	 * @return A List of tokens from the document text that match the regex
+	 * pattern
 	 */
-	protected List<String> getTokens(String pattern)
-	{
+	protected List<String> getTokens(String pattern) {
 		ArrayList<String> tokens = new ArrayList<String>();
 		Pattern tokSplitter = Pattern.compile(pattern);
 		Matcher m = tokSplitter.matcher(text);
-		
+
 		while (m.find()) {
 			tokens.add(m.group());
 		}
-		
+
 		return tokens;
 	}
-	
+
 	// This is a helper function that returns the number of syllables
 	// in a word.  You should write this and use it in your 
 	// BasicDocument class.
 	// You will probably NOT need to add a countWords or a countSentences method
 	// here.  The reason we put countSyllables here because we'll use it again
 	// next week when we implement the EfficientDocument class.
-	protected int countSyllables(String word)
-	{
+	protected int countSyllables(String word) {
 		// TODO: Implement this method so that you can call it from the 
-	    // getNumSyllables method in BasicDocument (module 1) and 
-	    // EfficientDocument (module 2).
-	    return 0;
+		// getNumSyllables method in BasicDocument (module 1) and
+		// EfficientDocument (module 2).
+		int count = 0;
+		word = word.toLowerCase();
+
+		if (word.charAt(word.length()-1) == 'e') {
+			if (silente(word)){
+				String newword = word.substring(0, word.length()-1);
+				count = count + countit(newword);
+			} else {
+				count++;
+			}
+		} else {
+			count = count + countit(word);
+		}
+		return count;
 	}
-	
+	private int countit(String word) {
+		int count = 0;
+		Pattern splitter = Pattern.compile("[^aeiouy]*[aeiouy]+");
+		Matcher m = splitter.matcher(word);
+
+		while (m.find()) {
+			count++;
+		}
+		return count;
+	}
+
+	private boolean silente(String word) {
+		word = word.substring(0, word.length()-1);
+
+		Pattern yup = Pattern.compile("[aeiouy]");
+		Matcher m = yup.matcher(word);
+
+		if (m.find()) {
+			return true;
+		} else
+			return false;
+	}
+
 	/** A method for testing
 	 * 
 	 * @param doc The Document object to test
@@ -116,8 +153,9 @@ public abstract class Document {
 	/** return the Flesch readability score of this document */
 	public double getFleschScore()
 	{
-	    // TODO: Implement this method
-	    return 0.0;
+		float f = 0.0f;
+		f = 206.835f - (1.015f * (getNumWords() / getNumSentences())) - (84.6f * (getNumSyllables() / getNumWords()));
+	    return f;
 	}
 	
 	
