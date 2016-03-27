@@ -63,7 +63,7 @@ crashlytics-build.properties
 
 # IntelliJ project files
 .idea
-*.iml
+
 out
 *.properties
 gen
