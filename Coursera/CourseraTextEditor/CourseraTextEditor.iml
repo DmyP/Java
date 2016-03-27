@@ -6,7 +6,9 @@
       <src_folder value="file://$MODULE_DIR$/../../CourseraTextEditor/src" expected_position="0" />
     </src_description>
   </component>
-  <component name="NewModuleRootManager" inherit-compiler-output="true">
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/../../out/production/CourseraTextEditor" />
+    <output-test url="file://$MODULE_DIR$/../../out/test/CourseraTextEditor" />
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
