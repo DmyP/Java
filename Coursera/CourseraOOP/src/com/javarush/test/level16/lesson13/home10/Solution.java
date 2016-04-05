@@ -23,8 +23,11 @@ public class Solution {
 
     static {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        firstFileName = reader.readLine();
-        secondFileName = reader.readLine();
+        try {
+            firstFileName = reader.readLine();
+            secondFileName = reader.readLine();
+        } catch (IOException e) {
+        }
     }
     public static void main(String[] args) throws InterruptedException {
         systemOutPrintln(firstFileName);
@@ -53,6 +56,16 @@ public class Solution {
         @Override
         public void run() {
             super.run();
+        }
+
+        @Override
+        public void setFileName(String fullFileName) {
+
+        }
+
+        @Override
+        public String getFileContent() {
+            return null;
         }
     }
 }
