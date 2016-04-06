@@ -1,7 +1,5 @@
 package com.javarush.test.level16.lesson13.home10;
 
-import java.io.*;
-
 /* Последовательный вывод файлов
 1. Разберись, что делает программа.
 2. В статическом блоке считай 2 имени файла firstFileName и secondFileName.
@@ -17,18 +15,53 @@ import java.io.*;
 [все тело второго файла]
 */
 
+import java.io.*;
+
 public class Solution {
     public static String firstFileName;
     public static String secondFileName;
 
     static {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             firstFileName = reader.readLine();
             secondFileName = reader.readLine();
         } catch (IOException e) {
         }
     }
+
+    public static class ReadFileThread extends Thread implements ReadFileInterface{
+        private String firstFileName;
+
+        @Override
+        public void setFileName(String fullFileName) {
+            this.firstFileName = fullFileName;
+        }
+
+        @Override
+        public String getFileContent() {
+            String line, result = "";
+            try (BufferedReader br = new BufferedReader(new FileReader(firstFileName))) {
+                while ((line = br.readLine()) != null) {
+                    result = result.concat(line + " ");
+                }
+                br.close();
+            } catch (FileNotFoundException e) {
+            } catch (IOException e) {
+            }
+
+            return result;
+        }
+
+
+        @Override
+        public void run() {
+            getFileContent();
+
+        }
+    }
+
+
     public static void main(String[] args) throws InterruptedException {
         systemOutPrintln(firstFileName);
         systemOutPrintln(secondFileName);
@@ -38,6 +71,7 @@ public class Solution {
         ReadFileInterface f = new ReadFileThread();
         f.setFileName(fileName);
         f.start();
+        f.join();
         System.out.println(f.getFileContent());
     }
 
@@ -50,22 +84,5 @@ public class Solution {
         void join() throws InterruptedException;
 
         void start();
-    }
-
-    public static class ReadFileThread extends Thread  implements ReadFileInterface {
-        @Override
-        public void run() {
-            super.run();
-        }
-
-        @Override
-        public void setFileName(String fullFileName) {
-
-        }
-
-        @Override
-        public String getFileContent() {
-            return null;
-        }
     }
 }
