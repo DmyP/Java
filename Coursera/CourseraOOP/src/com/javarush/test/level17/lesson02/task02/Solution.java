@@ -18,9 +18,17 @@ public class Solution {
         }
     }
 
+    public static class SortThread extends Thread {
+        @Override
+        public void run() {
+            sort(testArray);
+        }
+    }
     public static void main(String[] args) throws InterruptedException {
         initThreads();
     }
+
+
 
     public static void initThreads() throws InterruptedException {
         List<Thread> threads = new ArrayList<Thread>(countThreads);
