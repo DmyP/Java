@@ -105,7 +105,8 @@ public class BasicDocument extends Document
 		String[] arr = s.split("one,two,three");
 		for ( String s1 : arr) {
 			System.out.println("Str: " + s1 + ".");
-		}	
+		}
+
 	}
 	
 }

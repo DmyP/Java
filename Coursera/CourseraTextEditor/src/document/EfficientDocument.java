@@ -45,6 +45,21 @@ public class EfficientDocument extends Document {
 		
 		// TODO: Finish this method.  Remember the countSyllables method from 
 		// Document.  That will come in handy here.
+
+		int ind = 0;
+		for (String word : tokens) {
+			ind++;
+			if (isWord(word)) {
+				numWords++;
+				numSyllables = numSyllables + countSyllables(word);
+				if (ind == tokens.size()) {
+					numSentences++;
+				}
+			} else {
+				numSentences++;
+			}
+		}
+
 	}
 	
 	
@@ -60,7 +75,7 @@ public class EfficientDocument extends Document {
 		//TODO: write this method.  Hint: It's simple
 
 
-		return 0;
+		return numWords;
 	}
 
 	/**
@@ -74,7 +89,7 @@ public class EfficientDocument extends Document {
 	@Override
 	public int getNumSentences() {
         //TODO: write this method.  Hint: It's simple
-        return 0;
+        return numSentences;
 	}
 
 	/**
@@ -88,14 +103,14 @@ public class EfficientDocument extends Document {
 	@Override
 	public int getNumSyllables() {
         //TODO: write this method.  Hint: It's simple
-        return 0;
+        return numSyllables;
 	}
 	
 	// Can be used for testing
 	// We encourage you to add your own tests here.
 	public static void main(String[] args)
 	{
-	    testCase(new EfficientDocument("This is a test.  How many???  "
+		testCase(new EfficientDocument("This is a test.  How many???  "
                 + "Senteeeeeeeeeences are here... there should be 5!  Right?"),
                 16, 13, 5);
         testCase(new EfficientDocument(""), 0, 0, 0);
@@ -111,7 +126,6 @@ public class EfficientDocument extends Document {
 		testCase(new EfficientDocument("Sentences?!"), 3, 1, 1);
 		testCase(new EfficientDocument("Lorem ipsum dolor sit amet, qui ex choro quodsi moderatius, nam dolores explicari forensibus ad."),
 		         32, 15, 1);
-		
 	}
 	
 

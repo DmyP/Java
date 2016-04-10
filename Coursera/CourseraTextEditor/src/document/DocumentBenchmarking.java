@@ -2,6 +2,7 @@ package document;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 
 /** A class for timing the EfficientDocument and BasicDocument classes
@@ -13,7 +14,7 @@ import java.io.InputStreamReader;
 public class DocumentBenchmarking {
 
 	
-	public static void main(String [] args) {
+	public static void main(String [] args) throws FileNotFoundException {
 
 	    // Run each test more than once to get bigger numbers and less noise.
 	    // You can try playing around with this number.
@@ -37,28 +38,56 @@ public class DocumentBenchmarking {
 		// TODO: Fill in the rest of this method so that it runs two loops
 		// and prints out timing results as described in the assignment 
 		// instructions.
+
+		System.out.print("NumberOfChars" + "\t");
+		System.out.print("BasicTime" + "\t");
+		System.out.print("EfficientTime" + "\n");
+		double fletch;
+		long startTime, endTime;
+
 		for (int numToCheck = start; numToCheck < numSteps*increment + start; 
 				numToCheck += increment)
 		{
-			// numToCheck holds the number of characters that you should read from the 
-			// file to create both a BasicDocument and an EfficientDocument.  
-			
+			System.out.print(numToCheck + "\t");
+			String readfile = getStringFromFile(textfile, numToCheck);
+			startTime = System.nanoTime();
+			for (int i = 0; i < trials; i++) {
+				BasicDocument basicDocument = new BasicDocument(readfile);
+				fletch = basicDocument.getFleschScore();
+			}
+			endTime = System.nanoTime();
+			System.out.print((endTime - startTime)/1000000000.0 /trials + "\t");
+
+			startTime = System.nanoTime();
+			for (int i = 0; i < trials; i++) {
+				EfficientDocument efficientDocument = new EfficientDocument(readfile);
+				fletch = efficientDocument.getFleschScore();
+			}
+			endTime = System.nanoTime();
+			System.out.print((endTime - startTime)/1000000000.0 /trials + "\n");
+
+
+			// numToCheck holds the number of characters that you should read from the
+			// file to create both a BasicDocument and an EfficientDocument.
+
 			/* Each time through this loop you should:
 			 * 1. Print out numToCheck followed by a tab (\t) (NOT a newline)
 			 * 2. Read numToCheck characters from the file into a String
 			 *     Hint: use the helper method below.
 			 * 3. Time a loop that runs trials times (trials is the variable above) that:
-			 *     a. Creates a BasicDocument 
+			 *     a. Creates a BasicDocument
 			 *     b. Calls fleshScore on this document
-			 * 4. Print out the time it took to complete the loop in step 3 
+			 * 4. Print out the time it took to complete the loop in step 3
 			 *      (on the same line as the first print statement) followed by a tab (\t)
 			 * 5. Time a loop that runs trials times (trials is the variable above) that:
-			 *     a. Creates an EfficientDocument 
+			 *     a. Creates an EfficientDocument
 			 *     b. Calls fleshScore on this document
-			 * 6. Print out the time it took to complete the loop in step 5 
-			 *      (on the same line as the first print statement) followed by a newline (\n) 
-			 */  
-			 
+			 * 6. Print out the time it took to complete the loop in step 5
+			 *      (on the same line as the first print statement) followed by a newline (\n)
+			 */
+
+
+
 		}
 	
 	}
