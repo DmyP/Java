@@ -28,7 +28,7 @@ import java.io.*;
 public class Solution {
     public static void main(String[] args) throws Exception {
        // if (args[0].equals("-c")) addString(args);
-        String[] a = {"-c", "coat", "10173.99", "123 "};
+        String[] a = {"-c", "авыа ываыва ываыва ываыаыв аываыва ыва ыв а", "10173.99", "123 "};
         addString(a);
         String[] b = {"-c", "coatasdadasdasdasdasdasdasdasdasdasdasdasd", "1.99", "9999"};
         addString(b);
