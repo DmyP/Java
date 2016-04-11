@@ -24,40 +24,42 @@ id productName price quantity
 */
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class Solution {
+    static ArrayList<String> price = new ArrayList<String>();
+
     public static void main(String[] args) throws Exception {
-       // if (args[0].equals("-c")) addString(args);
-        String[] a = {"-c", "авыа ываыва ываыва ываыаыв аываыва ыва ыв а", "10173.99", "123 "};
-        addString(a);
-        String[] b = {"-c", "coatasdadasdasdasdasdasdasdasdasdasdasdasd", "1.99", "9999"};
-        addString(b);
-        String[] c = {"-c", "coaaasdasdt", "0", "0"};
-        addString(c);
+        if (args[0].equals("-c")) addString(args);
+
     }
 
-    private static void addString(String[] args) throws Exception {
+    public static void addString(String[] args) throws Exception {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         String fileName = bufferedReader.readLine();
-        bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
+        bufferedReader.close();
+        BufferedReader bufferedReader1 = new BufferedReader(new FileReader(fileName));
 
         String str;
         int max = 0;
-        while ((str = bufferedReader.readLine()) != null && str.length() != 0) {
-            int id = Integer.parseInt(str.substring(0, 7).trim());
+        while (bufferedReader1.ready()) {
+            str = bufferedReader1.readLine();
+            price.add(str);
+            int id = Integer.parseInt(str.substring(0, 8).replaceAll(" ",""));
             if (max == 0 || id > max) max = id;
         }
-        bufferedReader.close();
-        String id = String.format("%-8s", String.valueOf(max + 1));
-        String productName = String.format("%-30s", args[1]);
-        if (productName.length() > 30) productName = productName.substring(0, 29);
-        String price = String.format("%-8s", args[2]);
-        String quantity = String.format("%-4s", args[3]);
-        String resStr = id + productName + price + quantity;
+        bufferedReader1.close();
+        max++;
 
-        FileOutputStream fileOutputStream = new FileOutputStream(fileName, true);
-        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName, true)));
-        bufferedWriter.write("\n" + resStr);
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName));
+        for (int i = 0; i < price.size(); i++) {
+            if (price.get(i).equals("")) continue;
+            bufferedWriter.write(String.format("%s%n", price.get(i)));
+        }
+        String productname = args[1];
+        for (int l = 2; l < args.length-2; l++)
+            productname += " " + args[l];
+        bufferedWriter.write(String.format("%-8.8s%-30.30s%-8.8s%-4.4s%n",String.valueOf(max),productname,args[args.length-2],args[args.length-1]));
         bufferedWriter.close();
     }
 }

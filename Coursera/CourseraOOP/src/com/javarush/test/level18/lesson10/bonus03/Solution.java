@@ -24,8 +24,45 @@ id productName price quantity
 19847983Куртка для сноубордистов, разм10173.991234
 */
 
-public class Solution {
-    public static void main(String[] args) {
+import java.io.*;
+import java.util.ArrayList;
 
+public class Solution {
+    static ArrayList<String> price = new ArrayList<String>();
+
+    public static void main(String[] args) throws Exception {
+
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        String fileName = bufferedReader.readLine();
+        bufferedReader.close();
+        BufferedReader fileReader = new BufferedReader(new FileReader(fileName));
+        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(fileName, true));
+        String string;
+        while ((string = fileReader.readLine()) != null) {
+            price.add(string);
+        }
+        int id = Integer.parseInt(args[1]);
+        for (int i = 0; i < price.size(); i++) {
+            if (id == Integer.parseInt(price.get(i).substring(0, 8).trim().replace(" ", ""))) {
+                if ("-d".equals(args[0]))
+                    price.remove(i);
+                if ("-u".equals(args[0])) {
+                    String str = String.format("%-8.8s%-30.30s%-8.8s%-4.4s", args[1], args[2], args[3], args[4]);
+                    price.add(i, str);
+                    price.remove(i + 1);
+                    break;
+                }
+            }
+            }
+        new FileWriter(fileName).close();
+
+        for (String s: price){
+            fileWriter.write(s);
+            fileWriter.newLine();
+            fileWriter.flush();
+        }
+        bufferedReader.close();
+        fileReader.close();
+        fileWriter.close();
     }
 }
