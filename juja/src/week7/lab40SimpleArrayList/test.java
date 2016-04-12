@@ -3,7 +3,7 @@ package week7.lab40SimpleArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class Test{
+class Test{
     public static void main(String[] args) {
 
         //empty list
