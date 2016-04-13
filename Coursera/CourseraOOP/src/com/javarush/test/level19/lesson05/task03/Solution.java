@@ -17,18 +17,31 @@ import java.io.*;
 
 public class Solution {
     public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        FileReader reader = new FileReader(bufferedReader.readLine());
-        FileWriter writer = new FileWriter(bufferedReader.readLine());
-        int i = 0;
-        String buff;
-        while (reader.ready()) {
-            int data = reader.read();
-
-            if (i % 2 == 0) writer.write(data);
+        BufferedReader file = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(file.readLine()));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file.readLine()));
+        String[] strings;
+        while (bufferedReader.ready()) {
+            String string = "";
+            strings = bufferedReader.readLine().split(" ");
+            for (int i = 0; i < strings.length; i++) {
+                if (isNumeric(strings[i])) string += (strings[i] + " ");
+            }
+            bufferedWriter.write(string.trim());
         }
+        file.close();
         bufferedReader.close();
-        reader.close();
-        writer.close();
+        bufferedWriter.close();
+    }
+
+    public static boolean isNumeric(String str)
+    {
+        try {
+            double d = Double.parseDouble(str);
+        }
+        catch(NumberFormatException nfe) {
+            return false;
+        }
+        return true;
     }
 }
