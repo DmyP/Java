@@ -15,30 +15,28 @@ it's a text for testing
 it's a text for testing
 */
 
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
+import java.io.*;
 
 public class Solution {
     public static TestString testString = new TestString();
 
-    public static void main(String[] args) {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-
+    public static void main(String[] args) throws IOException {
+        BufferedReader file = new BufferedReader(new InputStreamReader(System.in));
+        FileWriter fileWriter = new FileWriter(file.readLine());
 
         PrintStream consoleStream = System.out;
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         PrintStream stream = new PrintStream(outputStream);
         System.setOut(stream);
-
         testString.printSomething();
+        String string = outputStream.toString();
 
-        String result = outputStream.toString().replaceAll("[^\\d]", "");
+        fileWriter.write(string);
 
         System.setOut(consoleStream);
-        System.out.println(result);
-
+        System.out.println(string);
+        file.close();
+        fileWriter.close();
     }
 
     public static class TestString {
