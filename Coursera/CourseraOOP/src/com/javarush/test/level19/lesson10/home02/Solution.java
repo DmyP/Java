@@ -36,19 +36,25 @@ public class Solution {
         while ((string = bufferedReader.readLine()) != null) {
             strings = string.split(" ");
             if (!names.containsKey(strings[0])) {
-                names.put(strings[0], 1);
+                names.put(strings[0], Double.parseDouble(strings[1]));
             } else {
-                names.put(strings[0], names.get(strings[0]) + 1);
+                names.put(strings[0], names.get(strings[0]).doubleValue() + Double.parseDouble(strings[1]));
             }
         }
-        int max = -1;
+        double max = -1;
+        String maxName = "";
         for (String key : names.keySet()) {
-            if (max == -1) {
+            if (max == -1 || names.get(key) > max) {
                 max = names.get(key);
-                System.out.println(key);
+                maxName = key;
+
             }
-            else if (names.get(key) == max) System.out.println(key);
+            else if (names.get(key) == max) {
+                maxName += " " + key;
+            }
+
         }
+        System.out.println(maxName);
 
         bufferedReader.close();
         fileReader.close();
