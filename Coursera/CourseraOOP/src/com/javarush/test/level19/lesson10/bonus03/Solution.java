@@ -62,12 +62,46 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class Solution {
     public static void main(String[] args) throws IOException {
         BufferedReader file = new BufferedReader(new InputStreamReader(System.in));
         BufferedReader bufferedReader =  new BufferedReader(new FileReader(file.readLine()));
+        String tag = args[0];
+        //String tag = "span";
+        String str = "";
+        while (bufferedReader.ready()) {
+            str = str.concat(bufferedReader.readLine());
+        }
 
+        str = str.replaceAll("\r\n", "");
 
+        TreeMap <Integer, Integer> indexList = new TreeMap<>();
+
+        String tagOpen = "<".concat(tag);
+        String tagClose = "</".concat(tag);
+        int len = tag.length();
+        int index = 0;
+
+        while ((index < str.length()) && (index != -1)) {
+            index = str.indexOf(tagOpen, index);
+            int index2 = str.indexOf(tagClose, index + len);
+            int k = index + len;
+            if (index2 != -1) {
+                while (str.substring(k, index2).contains(tagOpen)) {
+                    k = index2 + len;
+                    index2 = str.indexOf(tagClose, k);
+                }
+            }
+            if (index != -1 && index2 != -1) {
+                indexList.put(index, index2);
+                index += len;
+            }
+        }
+        for(Map.Entry<Integer,Integer> pair : indexList.entrySet()) {
+            System.out.println(str.substring(pair.getKey(), pair.getValue() + len + 3));
+        }
     }
 }
