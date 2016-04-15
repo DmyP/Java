@@ -69,13 +69,12 @@ public class Solution {
     public static void main(String[] args) throws IOException {
         BufferedReader file = new BufferedReader(new InputStreamReader(System.in));
         BufferedReader bufferedReader =  new BufferedReader(new FileReader(file.readLine()));
-        String tag = args[0];
-        //String tag = "span";
+        //String tag = args[0];
+        String tag = "span";
         String str = "";
         while (bufferedReader.ready()) {
             str = str.concat(bufferedReader.readLine());
         }
-
         str = str.replaceAll("\r\n", "");
 
         TreeMap <Integer, Integer> indexList = new TreeMap<>();
