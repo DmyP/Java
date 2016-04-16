@@ -60,6 +60,7 @@ public class Solution {
         public void load(InputStream inputStream) throws Exception {
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
             String str;
+
             if (!("null".equals(str = reader.readLine()))) ClassWithStatic.staticString = str;
             else  ClassWithStatic.staticString = null;
             this.i = Integer.parseInt(reader.readLine());

@@ -1,8 +1,6 @@
 package textgen;
 
-import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 
 public class MyLinkedListGrader {
 	
@@ -46,7 +44,7 @@ public class MyLinkedListGrader {
                 int tests = 0;
                 String feedback = "";
 		try {
-			out = new PrintWriter("grader_output/module3.part1.out", "utf-8");
+			out = new PrintWriter("/Users/inna/Documents/Java/Coursera/CourseraTextEditor/grader_output/module3.part1.out", "utf-8");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return;
