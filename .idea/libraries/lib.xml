@@ -6,5 +6,6 @@
     <JAVADOC />
     <SOURCES />
     <jarDirectory url="file://$PROJECT_DIR$/juja/lib" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/src/lib" recursive="false" />
   </library>
 </component>
