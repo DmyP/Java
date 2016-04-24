@@ -1,3 +1,4 @@
+/*
 package email;
 
 import javax.activation.DataHandler;
@@ -60,4 +61,4 @@ public class SendFileEmail
             mex.printStackTrace();
         }
     }
-}
+}*/
