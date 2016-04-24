@@ -27,7 +27,7 @@ public class LaunchClass {
 	}
 	
     public spelling.AutoComplete getAutoComplete() {
-        spelling.AutoCompleteDictionaryTrie tr = new spelling.AutoCompleteDictionaryTrie();
+        AutoCompleteMatchCase tr = new AutoCompleteMatchCase();
         spelling.DictionaryLoader.loadDictionary(tr, dictFile);
         return tr;
     }

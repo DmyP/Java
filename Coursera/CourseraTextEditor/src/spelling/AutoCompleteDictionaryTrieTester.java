@@ -5,7 +5,6 @@ package spelling;
 
 import static org.junit.Assert.*;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.Before;
@@ -19,9 +18,9 @@ public class AutoCompleteDictionaryTrieTester {
 
 	private String dictFile = "data/words.small.txt"; 
 
-	AutoCompleteDictionaryTrie emptyDict; 
-	AutoCompleteDictionaryTrie smallDict;
-	AutoCompleteDictionaryTrie largeDict;
+	AutoCompleteMatchCase emptyDict;
+	AutoCompleteMatchCase smallDict;
+	AutoCompleteMatchCase largeDict;
 	
 	/**
 	 * @throws java.lang.Exception
@@ -29,9 +28,9 @@ public class AutoCompleteDictionaryTrieTester {
 	@Before
 	public void setUp() throws Exception 
 	{
-		emptyDict = new AutoCompleteDictionaryTrie();
-		smallDict = new AutoCompleteDictionaryTrie();
-		largeDict = new AutoCompleteDictionaryTrie();
+		emptyDict = new AutoCompleteMatchCase();
+		smallDict = new AutoCompleteMatchCase();
+		largeDict = new AutoCompleteMatchCase();
 
 		smallDict.addWord("Hello");
 		smallDict.addWord("HElLo");

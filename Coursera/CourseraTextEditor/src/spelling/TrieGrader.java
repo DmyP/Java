@@ -25,7 +25,7 @@ public class TrieGrader {
         }
 
         try {
-            AutoCompleteDictionaryTrie ac = new AutoCompleteDictionaryTrie();
+            AutoCompleteMatchCase ac = new AutoCompleteMatchCase();
 
             g.testAddWords(ac);
 
@@ -47,7 +47,7 @@ public class TrieGrader {
     }
 
 
-    private void testAddWords(AutoCompleteDictionaryTrie ac) {
+    private void testAddWords(AutoCompleteMatchCase ac) {
         feedback.append( "//TESTING ADDING WORDS (addWord, insert)//");
         appendTestString(1, "Adding first word to dictionary...");
         feedback.append("addWord returned " + ac.addWord("dog") + ".");
@@ -94,7 +94,7 @@ public class TrieGrader {
         feedback.append("Dict size is " + ac.size()+ ".");
     }
 
-    private void testWordsInOut(AutoCompleteDictionaryTrie ac) {
+    private void testWordsInOut(AutoCompleteMatchCase ac) {
 
         feedback.append("\n\n\n//TESTING FOR WORDS IN/OUT OF DICTIONARY (isWord)//");
         appendTestString(6,"Checking empty string...");
@@ -123,7 +123,7 @@ public class TrieGrader {
 
     }
 
-    private void testPredictions(AutoCompleteDictionaryTrie ac) {
+    private void testPredictions(AutoCompleteMatchCase ac) {
 
         feedback.append("\n\n\n//TESTING AUTO COMPLETE FUNCTIONALITY (predictCompletions)//");
         List<String> auto = ac.predictCompletions("dog", 3);
