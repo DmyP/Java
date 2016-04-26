@@ -10,33 +10,34 @@ import java.util.List;
 
 
 public class ConsoleHelper {
-    private static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+    private static final BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
 
     public static void writeMessage(String message) {
         System.out.println(message);
     }
 
     public static String readString() throws IOException {
-        return reader.readLine();
+        return console.readLine();
     }
 
     public static List<Dish> getAllDishesForOrder() throws IOException {
-        List<Dish> list = new ArrayList<>();
+        List<Dish> dishes = new ArrayList<>();
+        String str;
         writeMessage("Enter dish...(" + Dish.allDishesToString() + ")");
-        String s = "";
         while (true) {
-            s = readString();
-            if ("exit".equalsIgnoreCase(s)) {
+            str = readString();
+            if ("exit".equals(str)) {
                 break;
             }
 
             try {
-                list.add(Dish.valueOf(s));
+                dishes.add(Dish.valueOf(str));
             }
             catch (IllegalArgumentException e) {
-                ConsoleHelper.writeMessage(s + " is not detected");
+                ConsoleHelper.writeMessage(str + " is not detected");
             }
         }
-        return list;
+        return dishes;
     }
 }
