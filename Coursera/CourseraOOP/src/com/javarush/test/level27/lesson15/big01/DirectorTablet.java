@@ -1,46 +1,49 @@
 package com.javarush.test.level27.lesson15.big01;
 
-import com.javarush.test.level27.lesson15.big01.statistic.StatisticManager;
+import com.javarush.test.level27.lesson15.big01.ad.Advertisement;
+import com.javarush.test.level27.lesson15.big01.ad.StatisticAdvertisementManager;
+import com.javarush.test.level27.lesson15.big01.statistic.StatisticEventManager;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Map;
+import java.util.*;
 
 public class DirectorTablet
 {
-    private DateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
-    public void printAdvertisementProfit()
-    {
-        double total = 0d;
-        for (Map.Entry<Date, Double> entry : StatisticManager.getInstance().getAdRevenue().entrySet())
-        {
-            double profit = entry.getValue();
-            ConsoleHelper.writeMessage(String.format("%s - %.2f", df.format(entry.getKey()), profit));
-            total += profit;
+    private SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+    public void printAdvertisementProfit() {
+        Map<Date, Object> advresults = StatisticEventManager.getInstance().getAdRevenue();
+        double sum = 0;
+        for (Map.Entry<Date, Object> dt : advresults.entrySet()) {
+            ConsoleHelper.writeMessage(String.format(Locale.ENGLISH, "%s - %.2f", sdf.format(dt.getKey()), dt.getValue()));
+            sum += (Double) dt.getValue();
         }
-        ConsoleHelper.writeMessage(String.format("Total - %.2f", total));
+        ConsoleHelper.writeMessage(String.format(Locale.ENGLISH, "Total - %.2f", sum));
+        //ConsoleHelper.writeMessage("");
     }
-    public void printCookWorkloading()
-    {
-        for (Map.Entry<Date, Map<String, Integer>> entry : StatisticManager.getInstance().getCookWorkload().entrySet())
-        {
-            ConsoleHelper.writeMessage(df.format(entry.getKey()));
-            for (Map.Entry<String, Integer> cooksEntry : entry.getValue().entrySet())
-            {
-                ConsoleHelper.writeMessage(String.format("%s - %d min", cooksEntry.getKey(), cooksEntry.getValue()));
-            }
+    public void printCookWorkloading() {
+        Map<Date, Object> advresults = StatisticEventManager.getInstance().getCookWorkload();
+        for (Map.Entry<Date, Object> dt : advresults.entrySet()) {
+            ConsoleHelper.writeMessage(sdf.format(dt.getKey()));
+            HashMap<String, Integer> temp = (HashMap<String, Integer>) dt.getValue();
+            List<String> list = new ArrayList<String>();
+            for (Map.Entry<String, Integer> e : temp.entrySet()) list.add(e.getKey());
+            Collections.sort(list);
+            for (String name : list) ConsoleHelper.writeMessage(String.format(Locale.ENGLISH, "%s - %d min", name, temp.get(name)));
             ConsoleHelper.writeMessage("");
         }
     }
 
     public void printActiveVideoSet()
     {
-
+        List<Advertisement> advertisements = StatisticAdvertisementManager.getInstance().getActiveVideos();
+        for (Advertisement advertisement : advertisements)
+            ConsoleHelper.writeMessage(String.format(Locale.ENGLISH, "%s - %d", advertisement.getName(), advertisement.getHits()));
     }
     public void printArchivedVideoSet()
     {
-
+        List<Advertisement> advertisements = StatisticAdvertisementManager.getInstance().getArchVideos();
+        for (Advertisement advertisement : StatisticAdvertisementManager.getInstance().getArchVideos())
+            ConsoleHelper.writeMessage(advertisement.getName());
     }
 }
 

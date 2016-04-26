@@ -8,12 +8,18 @@ import java.util.List;
 
 
 public class Order {
-    private List<Dish> dishes;
+
+    protected List<Dish> dishes;
     private Tablet tablet;
 
     public Order(Tablet tablet) throws IOException {
         this.dishes = ConsoleHelper.getAllDishesForOrder();
         this.tablet = tablet;
+    }
+
+    protected void initDishes() throws IOException
+    {
+        dishes = ConsoleHelper.getAllDishesForOrder();
     }
 
     @Override

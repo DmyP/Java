@@ -4,7 +4,10 @@ import com.javarush.test.level27.lesson15.big01.kitchen.Cook;
 import com.javarush.test.level27.lesson15.big01.kitchen.Waitor;
 
 public class Restaurant {
+    private final static int ORDER_CREATING_INTERVAL = 100;
     public static void main(String[] args) {
+
+
         Waitor waitor = new Waitor();
         Cook cook = new Cook("Amigo");
         cook.addObserver(waitor);
