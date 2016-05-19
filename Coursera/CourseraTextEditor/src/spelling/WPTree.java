@@ -4,9 +4,8 @@
 package spelling;
 
 //import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
+
+import java.util.*;
 
 /**
  * WPTree implements WordPath by dynamically creating a tree of words during a Breadth First
@@ -25,16 +24,14 @@ public class WPTree implements WordPath {
 	// This constructor is used by the Text Editor Application
 	// You'll need to create your own NearbyWords object here.
 	public WPTree () {
-		this.root = null;
 		// TODO initialize a NearbyWords object
-		// Dictionary d = new DictionaryHashSet();
-		// DictionaryLoader.loadDictionary(d, "data/dict.txt");
-		// this.nw = new NearbyWords(d);
+		 Dictionary d = new DictionaryHashSet();
+		 DictionaryLoader.loadDictionary(d, "data/dict.txt");
+		 this.nw = new NearbyWords(d);
 	}
 	
 	//This constructor will be used by the grader code
 	public WPTree (NearbyWords nw) {
-		this.root = null;
 		this.nw = nw;
 	}
 	
@@ -42,19 +39,33 @@ public class WPTree implements WordPath {
 	public List<String> findPath(String word1, String word2) 
 	{
 	    // TODO: Implement this method.
-	    return new LinkedList<String>();
+        if(!nw.dict.isWord(word2)) {
+            return null;
+        }
+        Queue<WPTreeNode> queue = new LinkedList<>();
+        Set<String> visitedSet = new HashSet<>();
+        WPTreeNode root = new WPTreeNode(word1, null);
+        visitedSet.add(word1);
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            WPTreeNode currNode = queue.remove();
+            String currWord = currNode.getWord();
+            List<String> neighbors = nw.distanceOne(currWord, true);
+            for (String n : neighbors) {
+                if (!visitedSet.contains(n)) {
+                    WPTreeNode newNode = currNode.addChild(n);
+                    visitedSet.add(n);
+                    queue.add(newNode);
+                    if (n.equals(word2)) {
+                        List<String> finalPath = newNode.buildPathToRoot();
+                        return finalPath;
+                    }
+                }
+            }
+        }
+        return null;
 	}
-	
-	// Method to print a list of WPTreeNodes (useful for debugging)
-	private String printQueue(List<WPTreeNode> list) {
-		String ret = "[ ";
-		
-		for (WPTreeNode w : list) {
-			ret+= w.getWord()+", ";
-		}
-		ret+= "]";
-		return ret;
-	}
+
 	
 }
 
@@ -143,5 +154,21 @@ class WPTreeNode {
         return ret;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null) {
+            return false;
+        }
+        if (!(obj instanceof String)) {
+            return false;
+        }
+        String inputStr = (String)obj;
+        return word.equals(inputStr);
+    }
+
+    @Override
+    public int hashCode() {
+        return word.hashCode();
+    }
 }
 

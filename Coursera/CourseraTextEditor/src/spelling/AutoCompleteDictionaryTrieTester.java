@@ -3,12 +3,13 @@
  */
 package spelling;
 
-import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author UC San Diego MOOC team
@@ -18,9 +19,9 @@ public class AutoCompleteDictionaryTrieTester {
 
 	private String dictFile = "data/words.small.txt"; 
 
-	AutoCompleteMatchCase emptyDict;
-	AutoCompleteMatchCase smallDict;
-	AutoCompleteMatchCase largeDict;
+	AutoCompleteDictionaryTrie emptyDict;
+	AutoCompleteDictionaryTrie smallDict;
+	AutoCompleteDictionaryTrie largeDict;
 	
 	/**
 	 * @throws java.lang.Exception
@@ -28,9 +29,9 @@ public class AutoCompleteDictionaryTrieTester {
 	@Before
 	public void setUp() throws Exception 
 	{
-		emptyDict = new AutoCompleteMatchCase();
-		smallDict = new AutoCompleteMatchCase();
-		largeDict = new AutoCompleteMatchCase();
+		emptyDict = new AutoCompleteDictionaryTrie();
+		smallDict = new AutoCompleteDictionaryTrie();
+		largeDict = new AutoCompleteDictionaryTrie();
 
 		smallDict.addWord("Hello");
 		smallDict.addWord("HElLo");

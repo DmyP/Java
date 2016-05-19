@@ -1,8 +1,7 @@
 package spelling;
 
-import java.util.List;
-import java.util.ArrayList;
 import java.io.PrintWriter;
+import java.util.List;
 
 public class NearbyWordsGraderTwo {
     public static void main(String args[]) {
@@ -12,7 +11,7 @@ public class NearbyWordsGraderTwo {
         PrintWriter out;
 
         try {
-            out = new PrintWriter("grader_output/module5.part2.out");
+            out = new PrintWriter("/Users/inna/Documents/Java/Coursera/CourseraTextEditor/grader_output/module5.part2.out");
         } catch (Exception e) {
             e.printStackTrace();
             return;
@@ -20,7 +19,7 @@ public class NearbyWordsGraderTwo {
 
         try {
             Dictionary d = new DictionaryHashSet();
-            DictionaryLoader.loadDictionary(d, "test_cases/dict2.txt");
+            DictionaryLoader.loadDictionary(d, "/Users/inna/Documents/Java/Coursera/CourseraTextEditor/test_cases/dict2.txt");
             NearbyWords nw = new NearbyWords(d);
 
             feedback += "** Test 1: 2 suggestions... ";

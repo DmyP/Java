@@ -44,5 +44,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="libCourseraTextEd" level="project" />
   </component>
 </module>
