@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/juja/juja.iml" filepath="$PROJECT_DIR$/juja/juja.iml" />
       <module fileurl="file://$PROJECT_DIR$/juja/src/mirror/mirror.iml" filepath="$PROJECT_DIR$/juja/src/mirror/mirror.iml" />
       <module fileurl="file://$PROJECT_DIR$/sqlcmd1/sqlcmd1.iml" filepath="$PROJECT_DIR$/sqlcmd1/sqlcmd1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test.iml" filepath="$PROJECT_DIR$/test.iml" />
     </modules>
   </component>
 </project>
