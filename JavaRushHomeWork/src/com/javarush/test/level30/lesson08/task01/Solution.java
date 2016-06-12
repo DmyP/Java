@@ -15,11 +15,11 @@ public class Solution {
     }
 
     public static int maxPowerOf2(int x) {
-        x |= x >> 1;
+        x   |= x >> 1;
         x |= x >> 2;
         x |= x >> 4;
         x |= x >> 8;
         x |= x >> 16;
-        return x - (x >> 1);
+        return (x & ~(x >> 1));
     }
 }
