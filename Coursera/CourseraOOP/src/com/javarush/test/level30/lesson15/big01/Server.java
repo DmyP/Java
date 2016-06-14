@@ -37,6 +37,28 @@ public class Server {
     private static class Handler extends Thread{
         private Socket socket;
 
+        @Override
+        public void run() {
+            ConsoleHelper.writeMessage("Установлено новое соединение с удаленным адресом" + socket.getRemoteSocketAddress());
+            String clientName = null;
+            try(Connection connection = new Connection(socket)){
+                clientName = serverHandshake(connection);
+                sendBroadcastMessage(new Message(MessageType.USER_ADDED, clientName));
+                sendListOfUsers(connection, clientName);
+                serverMainLoop(connection, clientName);
+
+            }catch (IOException e) {
+                ConsoleHelper.writeMessage("Ошибка при обмене данными с удаленным адресом");
+            } catch (ClassNotFoundException e) {
+                ConsoleHelper.writeMessage("Ошибка при обмене данными с удаленным адресом");
+            }
+
+            connectionMap.remove(clientName);
+            sendBroadcastMessage(new Message(MessageType.USER_REMOVED, clientName));
+            ConsoleHelper.writeMessage("Соединение с удаленным адресом закрыто");
+
+        }
+
         private void sendListOfUsers(Connection connection, String userName) throws IOException{
             for (String key : connectionMap.keySet()){
                 Message message = new Message(MessageType.USER_ADDED, key);
