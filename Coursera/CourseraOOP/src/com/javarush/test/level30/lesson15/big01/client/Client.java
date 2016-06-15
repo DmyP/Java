@@ -6,6 +6,7 @@ import com.javarush.test.level30.lesson15.big01.Message;
 import com.javarush.test.level30.lesson15.big01.MessageType;
 
 import java.io.IOException;
+import java.net.Socket;
 
 public class Client {
     protected Connection connection;
@@ -16,8 +17,7 @@ public class Client {
         client.run();
     }
 
-
-    protected void run(){
+    public void run(){
         SocketThread socketThread = getSocketThread();
         socketThread.setDaemon(true);
         socketThread.start();
@@ -48,8 +48,6 @@ public class Client {
         }
     }
 
-
-
     protected void sendTextMessage(String text){
         try {
             connection.send(new Message(MessageType.TEXT, text));
@@ -57,10 +55,6 @@ public class Client {
             ConsoleHelper.writeMessage("Ошибка");
             clientConnected = false;
         }
-    }
-
-    public class SocketThread extends Thread{
-
     }
 
     protected String getServerAddress(){
@@ -85,4 +79,87 @@ public class Client {
     protected SocketThread getSocketThread(){
         return new SocketThread();
     }
+
+    public class SocketThread extends Thread {
+
+        public void run(){
+            try {
+                Socket socket = new Socket(getServerAddress(), getServerPort());
+                Client.this.connection = new Connection(socket);
+
+                clientHandshake();
+                clientMainLoop();
+
+
+            } catch (IOException e) {
+                notifyConnectionStatusChanged(false);
+            } catch (ClassNotFoundException e) {
+                notifyConnectionStatusChanged(false);
+            }
+        }
+
+        protected void processIncomingMessage(String message){
+            ConsoleHelper.writeMessage(message);
+        }
+
+        protected void informAboutAddingNewUser(String userName){
+            ConsoleHelper.writeMessage("участник " + userName + " присоединился к чату");
+        }
+
+        protected void informAboutDeletingNewUser(String userName){
+            ConsoleHelper.writeMessage("участник " + userName + " покинул чат");
+        }
+
+        protected void notifyConnectionStatusChanged(boolean clientConnected){
+            Client.this.clientConnected = clientConnected;
+            synchronized (Client.this){
+                Client.this.notify();
+            }
+        }
+
+        protected void clientHandshake() throws IOException, ClassNotFoundException{
+            while (true){
+                Message message = connection.receive();
+                switch (message.getType()){
+                    case NAME_REQUEST: {
+                        String userName = getUserName();
+                        connection.send(new Message(MessageType.USER_NAME, userName));
+                        break;
+                    }
+                    case NAME_ACCEPTED: {
+                        notifyConnectionStatusChanged(true);
+                        return;
+                    }
+                    default: {
+                        throw new IOException("Unexpected MessageType");
+                    }
+
+                }
+            }
+        }
+
+        protected void clientMainLoop() throws IOException, ClassNotFoundException {
+            while (true){
+                Message message = connection.receive();
+                switch (message.getType()){
+                    case TEXT: {
+                        processIncomingMessage(message.getData());
+                        break;
+                    }
+                    case USER_ADDED: {
+                        informAboutAddingNewUser(message.getData());
+                        break;
+                    }
+                    case USER_REMOVED:
+                        informAboutDeletingNewUser(message.getData());
+                        break;
+                    default:
+                        throw new IOException("Unexpected MessageType");
+                }
+
+            }
+        }
+    }
+
+
 }
