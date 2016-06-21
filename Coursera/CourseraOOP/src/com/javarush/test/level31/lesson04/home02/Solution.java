@@ -2,6 +2,7 @@ package com.javarush.test.level31.lesson04.home02;
 
 import java.io.IOException;
 import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
@@ -15,10 +16,28 @@ D:/mydir/BCD.zip
 Метод main не участвует в тестировании
 */
 public class Solution extends SimpleFileVisitor<Path> {
+    @Override
+    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+        if (file.toString().endsWith(".zip") || file.toString().endsWith(".rar")) {
+            archived.add(file.toString());
+        }
+        return super.visitFile(file, attrs);
+    }
+
+    @Override
+    public FileVisitResult visitFileFailed(Path file, IOException exc) throws IOException {
+        if (!Files.exists(file)){
+            failed.add(file.toString());
+        }
+        return FileVisitResult.SKIP_SUBTREE;
+    }
+
     public static void main(String[] args) throws IOException {
+
+
         EnumSet<FileVisitOption> options = EnumSet.of(FileVisitOption.FOLLOW_LINKS);
         final Solution solution = new Solution();
-        Files.walkFileTree(Paths.get("/Users/inna/Documents/Java/src"), options, 20, solution);
+        Files.walkFileTree(Paths.get("/Users/inna/Documents/Java/src/"), options, 20, solution);
 
         List<String> result = solution.getArchived();
         System.out.println("All archived files:");
