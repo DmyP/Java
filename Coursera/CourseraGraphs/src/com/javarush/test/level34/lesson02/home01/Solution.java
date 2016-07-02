@@ -22,37 +22,7 @@ public class Solution {
 
     public void recursion(final String expression, int countOperation) {
         //implement
-        int from = expression.length() - 1;
-        int to = 0;
-        if (expression.charAt(from) == ')') {
 
-            return recursion(expression.substring(to + 1, from - 1);
-
-        } else {
-            int pos = from;
-
-            while (pos > to) {
-                if (Character.isDigit(expression.charAt(pos))) {
-                    pos--;
-                } else {
-                    int rightOperand = Integer.valueOf(expression.substring(pos + 1, from+1));
-                    char operation = expression.charAt(pos);
-                    int leftOperand = recursion(expression, pos - 1, to);
-
-                    switch (operation) {
-                        case '+':
-                            return leftOperand + rightOperand;
-                        case '-':
-                            return leftOperand - rightOperand;
-                        case '*':
-                            return leftOperand * rightOperand;
-                        case '/':
-                            return leftOperand / rightOperand;
-                    }
-                }
-            }
-            return Integer.valueOf(expression.substring(to, from + 1));
-        }
     }
 
     public Solution() {
