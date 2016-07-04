@@ -12,6 +12,7 @@ import java.util.List;
 2) добавьте в список 200 ссылок, используйте очередь helper.getQueue()
 3) верните заполненный список
 */
+
 public class Solution {
     public static Helper helper = new Helper();
 
