@@ -12,10 +12,12 @@ public class LevelLoader {
     }
 
     public GameObjects getLevel(int level){
-        Player player;
+        Player player = new Player(40, 40);
         Set<Wall> walls = new HashSet<>();
         Set<Home> homes = new HashSet<>();
         Set<Box> boxes = new HashSet<>();
+
+
         player = new Player(40, 40);
         walls.add(new Wall(200, 200));
         walls.add(new Wall(180, 180));
