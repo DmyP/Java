@@ -25,7 +25,8 @@ public class Solution
     public static void main(String[] args)
     {
         //Set<? extends Animal> allAnimals = getAllAnimals("C://pathToClasses/");
-        Set<? extends Animal> allAnimals = getAllAnimals("/Users/inna/Documents/Java/Coursera/CourseraGraphs/src/com/javarush/test/level35/lesson10/bonus01/data");
+        //Set<? extends Animal> allAnimals = getAllAnimals("/Users/inna/Documents/Java/Coursera/CourseraGraphs/src/com/javarush/test/level35/lesson10/bonus01/data");
+        Set<? extends Animal> allAnimals = getAllAnimals("D:\\java\\Coursera\\CourseraGraphs\\src\\com\\javarush\\test\\level35\\lesson10\\bonus01\\data");
         System.out.println(allAnimals);
     }
 
@@ -35,16 +36,16 @@ public class Solution
         if (!pathToAnimals.endsWith("\\") && !pathToAnimals.endsWith("/"))
             pathToAnimals = pathToAnimals + "/";
 
-        File dirOfClass = new File(pathToAnimals);
-        String[] classList = dirOfClass.list(new FilenameFilter()
+        File classesDir = new File(pathToAnimals);
+        String[] classes = classesDir.list(new FilenameFilter()
         {
             @Override
             public boolean accept(File dir, String name)
             {
-                return name.toLowerCase().endsWith(".class");
+                return name.toLowerCase().endsWith(".java");
             }
         });
-        for (String m : classList)
+        for (String m : classes)
         {
             try
             {
@@ -91,8 +92,7 @@ public class Solution
                 if (!hasConstructor) continue;
                 animals.add((Animal) clazz.newInstance());
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }
