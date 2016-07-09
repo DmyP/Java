@@ -1,12 +1,8 @@
 package com.javarush.test.level36.lesson04.big01.view;
 
-import com.javarush.test.level36.lesson04.big01.bean.User;
 import com.javarush.test.level36.lesson04.big01.controller.Controller;
 import com.javarush.test.level36.lesson04.big01.model.ModelData;
 
-/**
- * Created by Ростик on 24.09.2015.
- */
 public class UsersView implements View
 {
     private Controller controller;
@@ -18,12 +14,14 @@ public class UsersView implements View
 
     @Override
     public void refresh(ModelData modelData) {
-        if (modelData.isDisplayDeletedUserList() == true)
-            System.out.println("All deleted users:");
-        else
+        if (!modelData.isDisplayDeletedUserList()) {
             System.out.println("All users:");
-        for (User it: modelData.getUsers()) {
-            System.out.println("\t" + it.toString());
+        }
+        if (modelData.isDisplayDeletedUserList()) {
+            System.out.println("All deleted users:");
+        }
+        for (int i = 0; i < modelData.getUsers().size(); i++) {
+            System.out.println("\t" + modelData.getUsers().get(i));
         }
         System.out.println("===================================================");
     }
@@ -34,6 +32,10 @@ public class UsersView implements View
 
     public void fireEventShowDeletedUsers() {
         controller.onShowAllDeletedUsers();
+    }
+
+    public void fireEventOpenUserEditForm(long id) {
+        controller.onOpenUserEditForm(id);
     }
 
 }
