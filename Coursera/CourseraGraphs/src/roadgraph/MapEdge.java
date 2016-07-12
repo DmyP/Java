@@ -14,7 +14,6 @@ class MapEdge
 
     /** The type of the road */
     private String roadType;
-
     /** The two end points of the edge */
     private MapNode start;
     private MapNode end;

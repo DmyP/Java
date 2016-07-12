@@ -11,41 +11,35 @@ import java.util.Set;
  * Class representing a vertex (or node) in our MapGraph
  *
  */
-// WEEK 3 SOLUTIONS implements Comparable
+// WEEK3
+// implements Comparable
 class MapNode implements Comparable
 {
+    // WEEK2
     /** The list of edges out of this node */
     private HashSet<MapEdge> edges;
-
     /** the latitude and longitude of this node */
     private GeographicPoint location;
 
-    // WEEK 3 SOLUTIONS
-
-    /** the predicted distance of this node (used in Week 3 algorithms) */
+    // WEEK3
+    /** actual distance */
+    private double actualDistance;
+    /** predicted distance */
     private double distance;
 
-    /** the actual distance of this node from start (used in Week 3 algorithms) */
-    private double actualDistance;
-
-    // END WEEK 3 SOLUTIONS
-
-    MapNode(GeographicPoint loc)
-    {
+    MapNode(GeographicPoint loc) {
         location = loc;
         edges = new HashSet<MapEdge>();
         distance = Double.POSITIVE_INFINITY;
         actualDistance = Double.POSITIVE_INFINITY;
     }
 
-    void addEdge(MapEdge edge)
-    {
+    void addEdge(MapEdge edge) {
         edges.add(edge);
     }
 
     /** Return the neighbors of this MapNode */
-    Set<MapNode> getNeighbors()
-    {
+    Set<MapNode> getNeighbors() {
         Set<MapNode> neighbors = new HashSet<MapNode>();
         for (MapEdge edge : edges) {
             neighbors.add(edge.getOtherNode(this));
@@ -54,8 +48,7 @@ class MapNode implements Comparable
     }
 
     //returns an edge from this node to destination node
-    MapEdge getEdgeTo(MapNode destination)
-    {
+    MapEdge getEdgeTo(MapNode destination) {
         for (MapEdge edge: edges) {
             if (edge.getOtherNode(this).equals(destination))
                 return edge;
@@ -63,14 +56,12 @@ class MapNode implements Comparable
         return null;
     }
     /** get the location of a node */
-    GeographicPoint getLocation()
-    {
+    GeographicPoint getLocation() {
         return location;
     }
 
     /** return the edges out of this node */
-    Set<MapEdge> getEdges()
-    {
+    Set<MapEdge> getEdges() {
         return edges;
     }
 
@@ -78,8 +69,7 @@ class MapNode implements Comparable
      * Nodes are considered equal if their locations are the same,
      * even if their street list is different.
      */
-    public boolean equals(Object o)
-    {
+    public boolean equals(Object o) {
         if (!(o instanceof MapNode) || (o == null)) {
             return false;
         }
@@ -92,8 +82,7 @@ class MapNode implements Comparable
      * @return The HashCode for this node, which is the HashCode for the
      * underlying point
      */
-    public int HashCode()
-    {
+    public int HashCode() {
         return location.hashCode();
     }
 
@@ -121,55 +110,49 @@ class MapNode implements Comparable
         toReturn += ")";
         return toReturn;
     }
+    //  WEEK 3
 
-    //  WEEK 3 SOLUTIONS
-
-    // get node distance (predicted)
+    // Predicted node distance Getter
     public double getDistance() {
         return this.distance;
     }
 
-    // set node distance (predicted)
+    // Predicted node distance Setter
     public void setDistance(double distance) {
         this.distance = distance;
     }
 
-    // get node distance (actual)
+    // Actual node distance Getter
     public double getActualDistance() {
         return this.actualDistance;
     }
 
-    // set node distance (actual)
+    // Actual node distance Setter
     public void setActualDistance(double actualDistance) {
         this.actualDistance = actualDistance;
     }
 
-    // Code to implement Comparable
+    // Implement Comparable
     public int compareTo(Object o) {
-        // convert to map node, may throw exception
         MapNode m = (MapNode)o;
-        return ((Double)this.getDistance()).compareTo((Double) m.getDistance());
+        return ((Double)this.getDistance()).compareTo(m.getDistance());
     }
 
-    public double straightLineDistanceTo(MapNode dest)
+    // Calculating straight distance function
+    public double straightDistanceTo(MapNode destination)
     {
-        double lat1,lat2,lng1,lng2;
-        lat1=this.location.getX();
-        lng1=this.location.getY();
-        lat2=dest.location.getX();
-        lng2=dest.location.getY();
+        double currentLatitude = this.location.getX();
+        double currentLongitude = this.location.getY();
+        double destinationLatitude = destination.location.getX();
+        double destinationLongitude = destination.location.getY();
 
-        double earthRadius = 6371000; //meters
-        double dLat = Math.toRadians(lat2-lat1);
-        double dLng = Math.toRadians(lng2-lng1);
-        double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-                Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
-                        Math.sin(dLng/2) * Math.sin(dLng/2);
-        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-        double dist = (float) (earthRadius * c);
-
-        return dist;
-
+        double x = Math.sin(Math.toRadians(destinationLatitude - currentLatitude)/2) *
+                Math.sin(Math.toRadians(destinationLatitude - currentLatitude)/2) +
+                Math.cos(Math.toRadians(currentLatitude)) *
+                Math.cos(Math.toRadians(destinationLatitude)) *
+                Math.sin(Math.toRadians(destinationLongitude - currentLongitude)/2) *
+                Math.sin(Math.toRadians(destinationLongitude - currentLongitude)/2);
+        ////6371000 is earth radius in meters
+        return (float) 6371000 * (2 * Math.atan2(Math.sqrt(x), Math.sqrt(1 - x)));
     }
-    // END WEEK 3 SOLUTIONS
 }
