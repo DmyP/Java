@@ -6,20 +6,16 @@ import com.javarush.test.level36.lesson04.big01.view.UsersView;
 
 public class Controller
 {
-    Model model;
-    UsersView usersView;
+    private Model model;
+    private UsersView usersView;
+    private EditUserView editUserView;
 
-    public void setEditUserView(EditUserView editUserView) {
+    public void setEditUserView(EditUserView editUserView)
+    {
         this.editUserView = editUserView;
     }
-
-    EditUserView editUserView;
-
-    public Model getModel() {
-        return model;
-    }
-
-    public void setModel(Model model) {
+    public void setModel(Model model)
+    {
         this.model = model;
     }
 
@@ -28,15 +24,29 @@ public class Controller
         usersView.refresh(model.getModelData());
     }
 
-    public void setUsersView(UsersView usersView) {
+    public void setUsersView(UsersView usersView)
+    {
         this.usersView = usersView;
     }
+
     public void onShowAllDeletedUsers() {
         model.loadDeletedUsers();
         usersView.refresh(model.getModelData());
     }
 
-    public EditUserView getEditUserView() {
-        return editUserView;
+    public void onOpenUserEditForm(long userId) {
+        model.loadUserById(userId);
+        editUserView.refresh(model.getModelData());
     }
+
+    public void onUserDelete(long id) {
+        model.deleteUserById(id);
+        usersView.refresh(model.getModelData());
+    }
+
+    public void onUserChange(String name, long id, int level){
+        model.changeUserData(name, id, level);
+        usersView.refresh(model.getModelData());
+    }
+
 }
