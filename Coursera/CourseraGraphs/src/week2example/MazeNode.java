@@ -11,7 +11,7 @@ import java.util.List;
  * 
  * @author UCSD Intermediate Programming MOOC team
  * 
- * A class to represent a Node in a graph which is a Maze that the robot navigates.
+ * A class to represent a TreeNode in a graph which is a Maze that the robot navigates.
  */
 public class MazeNode {
 	private List<MazeNode> neighbors;

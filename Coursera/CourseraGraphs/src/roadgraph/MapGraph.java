@@ -97,7 +97,7 @@ public class MapGraph {
             pointNodeMap.put(location, n);
         }
         else {
-            System.out.println("Warning: Node at location " + location +
+            System.out.println("Warning: TreeNode at location " + location +
                     " already exists in the graph.");
         }
 

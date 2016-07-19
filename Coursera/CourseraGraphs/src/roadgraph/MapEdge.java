@@ -5,7 +5,7 @@ import geography.GeographicPoint;
 /**
  * @author UCSD Intermediate Programming MOOC team
  *
- * A directed edge in a map graph from Node start to Node end
+ * A directed edge in a map graph from TreeNode start to TreeNode end
  */
 class MapEdge
 {
