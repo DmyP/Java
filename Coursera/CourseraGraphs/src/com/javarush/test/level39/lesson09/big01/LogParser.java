@@ -25,7 +25,8 @@ public class LogParser implements IPQuery {
         for (File file : filesArray) {
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
                 while (reader.ready()) {
-                    logs.add(new Entry(reader.readLine()));
+                    Entry e = new Entry(reader.readLine());
+                    if (e.getIp() != null && e.getName() != null) logs.add(e);
                 }
             } catch (IOException | ParseException e) {
                 e.printStackTrace();

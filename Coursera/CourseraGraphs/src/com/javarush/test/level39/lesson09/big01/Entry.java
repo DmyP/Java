@@ -12,20 +12,33 @@ public class Entry {
     private int taskNum;
     private Status status;
 
+    public Entry() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy' 'HH:mm:ss");
+        ip = "";
+        name = "";
+        date = new Date();
+        event = null;
+        taskNum = 0;
+        status = null;
+    }
+
     public Entry(String strLog) throws ParseException {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy' 'HH:mm:ss");
         String[] arrayLog = strLog.split("\\t");
-        ip = arrayLog[0];
-        name = arrayLog[1];
-        date = simpleDateFormat.parse(arrayLog[2]);
-        String eventString = arrayLog[3];
-        if (eventString.contains(" ")) {
-            event = Event.valueOf(eventString.substring(0, eventString.indexOf(" ")));
-            taskNum = Integer.parseInt(eventString.substring(eventString.indexOf(" ") + 1));
-        } else {
-            event = Event.valueOf(eventString);
+
+        if (arrayLog.length == 5) {
+            ip = arrayLog[0];
+            name = arrayLog[1];
+            date = simpleDateFormat.parse(arrayLog[2]);
+            String eventString = arrayLog[3];
+            if (eventString.contains(" ")) {
+                event = Event.valueOf(eventString.substring(0, eventString.indexOf(" ")));
+                taskNum = Integer.parseInt(eventString.substring(eventString.indexOf(" ") + 1));
+            } else {
+                event = Event.valueOf(eventString);
+            }
+            status = Status.valueOf(arrayLog[4]);
         }
-        status = Status.valueOf(arrayLog[4]);
     }
 
     @Override
