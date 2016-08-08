@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/JavaRushHomeWork/JavaRushHomeWork.iml" filepath="$PROJECT_DIR$/JavaRushHomeWork/JavaRushHomeWork.iml" />
       <module fileurl="file://$PROJECT_DIR$/juja/juja.iml" filepath="$PROJECT_DIR$/juja/juja.iml" />
       <module fileurl="file://$PROJECT_DIR$/juja/src/mirror/mirror.iml" filepath="$PROJECT_DIR$/juja/src/mirror/mirror.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring/spring.iml" filepath="$PROJECT_DIR$/spring/spring.iml" />
       <module fileurl="file://$PROJECT_DIR$/sqlcmd1/sqlcmd1.iml" filepath="$PROJECT_DIR$/sqlcmd1/sqlcmd1.iml" />
     </modules>
   </component>
