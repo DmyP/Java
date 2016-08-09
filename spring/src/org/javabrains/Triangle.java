@@ -1,6 +1,7 @@
 package org.javabrains;
 
 public class Triangle {
+
     private Point pointA;
     private Point pointB;
     private Point pointC;
@@ -30,6 +31,6 @@ public class Triangle {
     }
 
     public void draw() {
-        System.out.format("A - \tx = %d,  \ty = %d, \nB - \tx = %d, \ty = %d, \nC - \tx = %d, \ty = %d", getPointA().getX(), getPointA().getY(), getPointB().getX(), getPointB().getY(), getPointC().getX(), getPointC().getY() );
+        System.out.println();
     }
 }

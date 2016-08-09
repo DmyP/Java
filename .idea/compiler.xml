@@ -22,10 +22,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="SpringMVCHibernateManyToManyCRUDExample" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="mirror" target="1.5" />
+      <module name="SpringMVCHibernateManyToManyCRUDExample" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
