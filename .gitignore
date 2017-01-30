@@ -68,3 +68,6 @@ out
 *.properties
 gen
 # Created by .ignore support plugin (hsz.mobi)
+Coursera/
+CourseraOOP/lib/
+CourseraTextEditor/lib/
